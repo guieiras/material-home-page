@@ -2,8 +2,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
-import Layout from '../src/Layout';
-import Link from '../src/Link';
+import Layout from '../src/components/Layout';
+import Link from '../src/components/Link';
 
 export default function Index(): JSX.Element {
   return (
