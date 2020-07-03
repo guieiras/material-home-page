@@ -4,8 +4,10 @@ import React from 'react';
 
 import Layout from '../src/components/Layout';
 import Link from '../src/components/Link';
+import { ContentfulEntries } from '../src/services/contentful';
+import DataFetcher from '../src/services/fetcher';
 
-export default function Index(): JSX.Element {
+export default function Index({ content }: { content: ContentfulEntries[] }): JSX.Element {
   return (
     <Layout>
       <Box my={4}>
@@ -15,7 +17,18 @@ export default function Index(): JSX.Element {
         <Link href="/" color="secondary">
           Link to Home
         </Link>
+        { content }
       </Box>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const content = await DataFetcher();
+
+  return {
+    props: {
+      content,
+    },
+  };
 }
