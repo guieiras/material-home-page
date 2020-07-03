@@ -10,7 +10,7 @@ import Skill from '../interfaces/skill';
 import { ContentfulEntries } from '../services/contentful';
 
 export interface HomeResponse {
-  path: string;
+  language: string;
   profile: Profile;
   professional: ProfessionalExperience[];
   formation: AcademicFormation[];
@@ -39,7 +39,7 @@ const initialBlocks: Record<string, Block> = {};
 export default function ContentfulSerializer(response: ContentfulEntries[]): HomeResponse[] {
   return response.map((node) => {
     return {
-      path: `/${node.locale.default ? '' : node.locale.code}`,
+      language: node.locale.default ? '' : node.locale.code,
       profile: node.content.items
         .filter((item) => item.sys.contentType.sys.id === 'cv')
         .reduce(
