@@ -4,20 +4,19 @@ import React from 'react';
 
 import Layout from '../src/components/Layout';
 import Link from '../src/components/Link';
-import { ContentfulEntries } from '../src/services/contentful';
+import { HomeResponse } from '../src/serializers/contentful';
 import DataFetcher from '../src/services/fetcher';
 
-export default function Index({ content }: { content: ContentfulEntries[] }): JSX.Element {
+export default function Index({ content }: { content: HomeResponse }): JSX.Element {
   return (
     <Layout>
       <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Next.js with TypeScript example
+        <Typography variant="h1" component="h1" gutterBottom>
+          { content.profile.name }
         </Typography>
         <Link href="/" color="secondary">
           Link to Home
         </Link>
-        { content }
       </Box>
     </Layout>
   );
@@ -28,7 +27,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      content,
+      content: content.filter((node) => node.language === '')[0],
     },
   };
 }
