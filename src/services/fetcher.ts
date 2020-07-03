@@ -1,8 +1,6 @@
-import fs from 'fs';
-import { promisify } from 'util';
+import { promises } from 'fs';
 
 import ContentfulSerializer, { HomeResponse } from '../serializers/contentful';
-
 import ContentfulService from './contentful';
 
 export enum DataStrategy {
@@ -11,7 +9,9 @@ export enum DataStrategy {
   LocalOnly,
   RemoteOnly,
 }
-const LOCAL_FILE = '.cache/.contentful.json';
+
+const LOCAL_FOLDER = '.cache';
+const LOCAL_FILE = `${LOCAL_FOLDER}/.contentful.json`;
 
 export default async function DataFetcher(strategy: DataStrategy = DataStrategy.LocalFirst): Promise<HomeResponse[]> {
   if (strategy === DataStrategy.LocalFirst) {
@@ -35,15 +35,14 @@ async function remoteFetch(): Promise<HomeResponse[]> {
 }
 
 async function localFetch(): Promise<HomeResponse[]> {
-  const readFile = promisify(fs.readFile);
-  const fileBuffer = await readFile(LOCAL_FILE);
+  const fileBuffer = await promises.readFile(LOCAL_FILE);
   const json = fileBuffer.toString();
   return JSON.parse(json);
 }
 
 async function cacheContent(content: HomeResponse[]): Promise<HomeResponse[]> {
-  const writeFile = promisify(fs.writeFile);
-  writeFile(LOCAL_FILE, JSON.stringify(content));
+  await promises.mkdir(LOCAL_FOLDER, { recursive: true })
+  await promises.writeFile(LOCAL_FILE, JSON.stringify(content));
 
   return content;
 }
