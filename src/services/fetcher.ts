@@ -31,7 +31,6 @@ async function remoteFetch(): Promise<HomeResponse[]> {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
     host: process.env.CONTENTFUL_HOST,
   }).getContent();
-  console.log(content);
   return ContentfulSerializer(content);
 }
 
