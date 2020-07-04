@@ -1,6 +1,7 @@
 import { promises } from 'fs';
 
 import ContentfulSerializer, { HomeResponse } from '../serializers/contentful';
+
 import ContentfulService from './contentful';
 
 export enum DataStrategy {
@@ -41,7 +42,7 @@ async function localFetch(): Promise<HomeResponse[]> {
 }
 
 async function cacheContent(content: HomeResponse[]): Promise<HomeResponse[]> {
-  await promises.mkdir(LOCAL_FOLDER, { recursive: true })
+  await promises.mkdir(LOCAL_FOLDER, { recursive: true });
   await promises.writeFile(LOCAL_FILE, JSON.stringify(content));
 
   return content;

@@ -12,7 +12,7 @@ export default function Index({ content }: { content: HomeResponse }): JSX.Eleme
     <Layout>
       <Box my={4}>
         <Typography variant="h1" component="h1" gutterBottom>
-          { content.profile.name }
+          {content.profile.name}
         </Typography>
         <Link href="/" color="secondary">
           Link to Home

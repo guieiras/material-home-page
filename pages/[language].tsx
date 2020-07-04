@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { HomeResponse } from '../src/serializers/contentful';
 import DataFetcher from '../src/services/fetcher';
+
 import Index from '.';
 
 export default function LanguageHome({ content }: { content: HomeResponse }): JSX.Element {
