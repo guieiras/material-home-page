@@ -6,9 +6,12 @@ import React from 'react';
 import Profile from '../../interfaces/profile';
 import ContentfulRichText from '../ContentfulRichText';
 
+import ProfileLinks from './ProfileLinks';
+
 const useStyles = makeStyles(() => ({
   root: {
     padding: 15,
+    marginBottom: 20,
   },
   caption: {
     marginBottom: 20,
@@ -27,9 +30,10 @@ export default function HomeProfile({ profile }: ComponentProps): JSX.Element {
       <Typography variant="h5" component="h1">
         {profile.name}
       </Typography>
-      <Typography variant="caption" component="p" className={classes.caption}>
+      <Typography variant="caption" component="p">
         {profile.title}
       </Typography>
+      <ProfileLinks profile={profile} />
 
       {ContentfulRichText(profile.bio)}
     </Paper>
