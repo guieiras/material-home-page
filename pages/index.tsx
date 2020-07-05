@@ -1,23 +1,16 @@
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import Head from 'next/head';
 import React from 'react';
 
 import Layout from '../src/components/Layout';
-import Link from '../src/components/Link';
 import { HomeResponse } from '../src/serializers/contentful';
 import DataFetcher from '../src/services/fetcher';
 
 export default function Index({ content }: { content: HomeResponse }): JSX.Element {
   return (
-    <Layout>
-      <Box my={4}>
-        <Typography variant="h1" component="h1" gutterBottom>
-          {content.profile.name}
-        </Typography>
-        <Link href="/" color="secondary">
-          Link to Home
-        </Link>
-      </Box>
+    <Layout siteName={content.profile.name}>
+      <Head>
+        <title>{content.profile.name}</title>
+      </Head>
     </Layout>
   );
 }

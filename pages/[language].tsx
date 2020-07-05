@@ -17,7 +17,10 @@ export async function getStaticPaths() {
   const content = await DataFetcher();
 
   return {
-    paths: content.map((dictionary) => ({ params: { language: dictionary.language } })),
+    paths: content.reduce(
+      (memo, { language }) => [...memo, ...(language === '' ? [] : [{ params: { language } }])],
+      [],
+    ),
     fallback: false,
   };
 }
