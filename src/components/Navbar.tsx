@@ -11,6 +11,8 @@ import ToyBrick from 'mdi-material-ui/ToyBrick';
 import propTypes from 'prop-types';
 import React from 'react';
 
+import { useI18n } from '../i18n';
+
 interface LinkProps {
   href: string;
   icon: JSX.Element;
@@ -48,6 +50,7 @@ NavbarLink.propTypes = {
 
 export default function Navbar({ siteName }: ComponentProps): JSX.Element {
   const theme = useTheme();
+  const texts = useI18n();
   const classes = useStyles();
 
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -58,9 +61,24 @@ export default function Navbar({ siteName }: ComponentProps): JSX.Element {
         <Typography variant="h6" className={classes.title}>
           {siteName}
         </Typography>
-        <NavbarLink isMobile={isMobile} href="resume" text="Currículo" icon={<FileAccount aria-hidden="true" />} />
-        <NavbarLink isMobile={isMobile} href="portfolio" text="Projetos" icon={<ToyBrick aria-hidden="true" />} />
-        <NavbarLink isMobile={isMobile} href="blog" text="Blog" icon={<Post aria-hidden="true" />} />
+        <NavbarLink
+          isMobile={isMobile}
+          href="resume"
+          text={texts.components.navbar.resume}
+          icon={<FileAccount aria-hidden="true" />}
+        />
+        <NavbarLink
+          isMobile={isMobile}
+          href="portfolio"
+          text={texts.components.navbar.portfolio}
+          icon={<ToyBrick aria-hidden="true" />}
+        />
+        <NavbarLink
+          isMobile={isMobile}
+          href="blog"
+          text={texts.components.navbar.blog}
+          icon={<Post aria-hidden="true" />}
+        />
       </Toolbar>
     </AppBar>
   );
