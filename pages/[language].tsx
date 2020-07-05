@@ -9,7 +9,7 @@ export default function LanguageHome({ content }: { content: HomeResponse }): JS
 
 interface PageParams {
   params: {
-    language: string;
+    language?: string;
   };
 }
 
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 
   return {
     paths: content.reduce(
-      (memo, { language }) => [...memo, ...(language === '' ? [] : [{ params: { language } }])],
+      (memo, { language }) => [...memo, ...(language.default ? [] : [{ params: { language: language.code } }])],
       [],
     ),
     fallback: false,
@@ -30,7 +30,7 @@ export async function getStaticProps({ params: { language } }: PageParams) {
 
   return {
     props: {
-      content: content.filter((node) => node.language === language)[0],
+      content: content.filter((node) => node.language.code === language)[0],
     },
   };
 }
