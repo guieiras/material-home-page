@@ -13,7 +13,7 @@ export default function Index({ content }: { content: HomeResponse }): JSX.Eleme
       <Head>
         <title>{content.profile.name}</title>
       </Head>
-      <Layout siteName={content.profile.name}>
+      <Layout siteName={content.profile.siteName}>
         <HomeProfile profile={content.profile} />
       </Layout>
     </I18nProvider>
