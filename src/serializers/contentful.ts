@@ -5,16 +5,14 @@ import ProfessionalExperience from '../interfaces/experience';
 import { ContentfulFile } from '../interfaces/file';
 import AcademicFormation from '../interfaces/formation';
 import HomeCard from '../interfaces/homeCard';
+import Language from '../interfaces/language';
 import Post from '../interfaces/post';
 import Profile from '../interfaces/profile';
 import Skill from '../interfaces/skill';
 import { ContentfulEntries } from '../services/contentful';
 
 export interface HomeResponse {
-  language: {
-    code: string;
-    default: boolean;
-  };
+  language: Language;
   profile: Profile;
   homeCards: HomeCard[];
   professional: ProfessionalExperience[];
