@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 
 import HomeProfile from '../src/components/Home/Profile';
+import HomeProfileLinkCards from '../src/components/Home/ProfileLinkCards';
 import Layout from '../src/components/Layout';
 import { I18nProvider } from '../src/i18n';
 import { HomeResponse } from '../src/serializers/contentful';
@@ -15,6 +16,7 @@ export default function Index({ content }: { content: HomeResponse }): JSX.Eleme
       </Head>
       <Layout siteName={content.profile.siteName}>
         <HomeProfile profile={content.profile} />
+        <HomeProfileLinkCards cards={content.homeCards} />
       </Layout>
     </I18nProvider>
   );

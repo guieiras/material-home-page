@@ -4,6 +4,7 @@ import Block from '../interfaces/block';
 import ProfessionalExperience from '../interfaces/experience';
 import { ContentfulFile } from '../interfaces/file';
 import AcademicFormation from '../interfaces/formation';
+import HomeCard from '../interfaces/homeCard';
 import Post from '../interfaces/post';
 import Profile from '../interfaces/profile';
 import Skill from '../interfaces/skill';
@@ -15,6 +16,7 @@ export interface HomeResponse {
     default: boolean;
   };
   profile: Profile;
+  homeCards: HomeCard[];
   professional: ProfessionalExperience[];
   formation: AcademicFormation[];
   skills: Record<string, Skill[]>;
@@ -65,6 +67,14 @@ export default function ContentfulSerializer(response: ContentfulEntries[]): Hom
           }),
           initialProfile,
         ),
+      homeCards: node.content.items
+        .filter((item) => item.sys.contentType.sys.id === 'homeCards')
+        .sort((a, b) => (a.fields.order as number) - (b.fields.order as number))
+        .map(({ fields }) => ({
+          name: fields.name as string,
+          slug: fields.slug as string,
+          description: fields.description as string,
+        })),
       professional: node.content.items
         .filter((item) => item.sys.contentType.sys.id === 'professional')
         .sort((a, b) => compareDesc(parseISO(a.fields.startDate as string), parseISO(b.fields.startDate as string)))
