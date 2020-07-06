@@ -1,11 +1,11 @@
+import CMSContent from '../src/interfaces';
 import Language from '../src/interfaces/language';
-import { HomeResponse } from '../src/serializers/contentful';
 import DataFetcher from '../src/services/fetcher';
 
 import Index from '.';
 
 interface PageProps {
-  content: HomeResponse;
+  content: CMSContent;
   languages: Language[];
 }
 

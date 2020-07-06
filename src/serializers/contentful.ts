@@ -1,25 +1,29 @@
 import { compareDesc, parseISO } from 'date-fns';
 
+import CMSContent from '../interfaces';
 import Block from '../interfaces/block';
 import ProfessionalExperience from '../interfaces/experience';
-import { ContentfulFile } from '../interfaces/file';
-import AcademicFormation from '../interfaces/formation';
-import HomeCard from '../interfaces/homeCard';
-import Language from '../interfaces/language';
-import Post from '../interfaces/post';
-import Profile from '../interfaces/profile';
 import Skill from '../interfaces/skill';
 import { ContentfulEntries } from '../services/contentful';
 
-export interface HomeResponse {
-  language: Language;
-  profile: Profile;
-  homeCards: HomeCard[];
-  professional: ProfessionalExperience[];
-  formation: AcademicFormation[];
-  skills: Record<string, Skill[]>;
-  blocks: Record<string, Block>;
-  posts: Post[];
+interface ContentfulFile {
+  sys: {
+    createdAt: string;
+    updatedAt: string;
+  };
+  fields: {
+    title: string;
+    description: string;
+    file: {
+      url: string;
+      details: {
+        size: number;
+        image: { width: number; height: number };
+      };
+      fileName: string;
+      contentType: string;
+    };
+  };
 }
 
 const initialProfile = {
@@ -40,7 +44,7 @@ const initialProfessionalExperiences: ProfessionalExperience[] = [];
 const initialSkills: Record<string, Skill[]> = {};
 const initialBlocks: Record<string, Block> = {};
 
-export default function ContentfulSerializer(response: ContentfulEntries[]): HomeResponse[] {
+export default function ContentfulSerializer(response: ContentfulEntries[]): CMSContent[] {
   return response.map((node) => {
     return {
       language: {

@@ -1,6 +1,7 @@
 import { promises } from 'fs';
 
-import ContentfulSerializer, { HomeResponse } from '../serializers/contentful';
+import CMSContent from '../interfaces';
+import ContentfulSerializer from '../serializers/contentful';
 
 import ContentfulService from './contentful';
 
@@ -14,7 +15,7 @@ export enum DataStrategy {
 const LOCAL_FOLDER = '.cache';
 const LOCAL_FILE = `${LOCAL_FOLDER}/.contentful.json`;
 
-export default async function DataFetcher(strategy: DataStrategy = DataStrategy.LocalFirst): Promise<HomeResponse[]> {
+export default async function DataFetcher(strategy: DataStrategy = DataStrategy.LocalFirst): Promise<CMSContent[]> {
   if (strategy === DataStrategy.LocalFirst) {
     try {
       const content = await localFetch();
@@ -26,7 +27,7 @@ export default async function DataFetcher(strategy: DataStrategy = DataStrategy.
   }
 }
 
-async function remoteFetch(): Promise<HomeResponse[]> {
+async function remoteFetch(): Promise<CMSContent[]> {
   const content = await new ContentfulService({
     space: process.env.CONTENTFUL_SPACE,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -35,13 +36,13 @@ async function remoteFetch(): Promise<HomeResponse[]> {
   return ContentfulSerializer(content);
 }
 
-async function localFetch(): Promise<HomeResponse[]> {
+async function localFetch(): Promise<CMSContent[]> {
   const fileBuffer = await promises.readFile(LOCAL_FILE);
   const json = fileBuffer.toString();
   return JSON.parse(json);
 }
 
-async function cacheContent(content: HomeResponse[]): Promise<HomeResponse[]> {
+async function cacheContent(content: CMSContent[]): Promise<CMSContent[]> {
   await promises.mkdir(LOCAL_FOLDER, { recursive: true });
   await promises.writeFile(LOCAL_FILE, JSON.stringify(content));
 
