@@ -1,10 +1,16 @@
+import Language from '../src/interfaces/language';
 import { HomeResponse } from '../src/serializers/contentful';
 import DataFetcher from '../src/services/fetcher';
 
 import Index from '.';
 
-export default function LanguageHome({ content }: { content: HomeResponse }): JSX.Element {
-  return Index({ content });
+interface PageProps {
+  content: HomeResponse;
+  languages: Language[];
+}
+
+export default function LanguageHome({ content, languages }: PageProps): JSX.Element {
+  return Index({ content, languages });
 }
 
 interface PageParams {
@@ -31,6 +37,7 @@ export async function getStaticProps({ params: { language } }: PageParams) {
   return {
     props: {
       content: content.filter((node) => node.language.code === language)[0],
+      languages: content.reduce((memo, node) => [...memo, node.language], []),
     },
   };
 }
