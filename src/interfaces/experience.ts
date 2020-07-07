@@ -1,8 +1,8 @@
 export interface ProfessionalExperienceJob {
   title: string;
   jobDescription: string;
-  startDate?: Date;
-  endDate?: Date;
+  startDate?: string;
+  endDate?: string;
 }
 export default interface ProfessionalExperience {
   company: string;

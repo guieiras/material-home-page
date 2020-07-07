@@ -2,11 +2,11 @@ import { compareDesc, parseISO } from 'date-fns';
 
 import CMSContent from '../interfaces';
 import Block from '../interfaces/block';
-import ProfessionalExperience from '../interfaces/experience';
 import Skill from '../interfaces/skill';
 import { ContentfulEntries } from '../services/contentful';
+import ContentfulProfessionalSerializer from './contentful/professional';
 
-interface ContentfulFile {
+export interface ContentfulFile {
   sys: {
     createdAt: string;
     updatedAt: string;
@@ -40,7 +40,6 @@ const initialProfile = {
   },
 };
 
-const initialProfessionalExperiences: ProfessionalExperience[] = [];
 const initialSkills: Record<string, Skill[]> = {};
 const initialBlocks: Record<string, Block> = {};
 
@@ -77,27 +76,10 @@ export default function ContentfulSerializer(response: ContentfulEntries[]): CMS
           slug: fields.slug as string,
           description: fields.description as string,
         })),
-      professional: node.content.items
-        .filter((item) => item.sys.contentType.sys.id === 'professional')
-        .sort((a, b) => compareDesc(parseISO(a.fields.startDate as string), parseISO(b.fields.startDate as string)))
-        .reduce((memo, { fields }, index) => {
-          if (index === 0 || memo[memo.length - 1].company !== fields.company) {
-            memo.push({
-              company: fields.company as string,
-              companyImage: (fields.companyImage as ContentfulFile)?.fields?.file?.url,
-              jobs: [],
-            });
-          }
-
-          memo[memo.length - 1].jobs.push({
-            title: fields.title as string,
-            jobDescription: fields.jobDescription as string,
-            startDate: fields.startDate && parseISO(fields.startDate as string),
-            endDate: fields.endDate && parseISO(fields.endDate as string),
-          });
-
-          return memo;
-        }, initialProfessionalExperiences),
+      professional: ContentfulProfessionalSerializer(
+        node.content.items
+          .filter((item) => item.sys.contentType.sys.id === 'professional')
+      ),
       formation: node.content.items
         .filter((item) => item.sys.contentType.sys.id === 'academic')
         .sort((a, b) => (a.fields.startYear as number) - (b.fields.startYear as number))
