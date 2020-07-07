@@ -1,23 +1,8 @@
-import CMSContent from '../src/interfaces';
-import Language from '../src/interfaces/language';
+import { fetchDataToStaticProps } from '../src/cms';
+import LayoutHOC from '../src/components/Layout/HOC';
 import DataFetcher from '../src/services/fetcher';
 
-import Index from '.';
-
-interface PageProps {
-  content: CMSContent;
-  languages: Language[];
-}
-
-export default function LanguageHome({ content, languages }: PageProps): JSX.Element {
-  return Index({ content, languages });
-}
-
-interface PageParams {
-  params: {
-    language?: string;
-  };
-}
+import { Index } from '.';
 
 export async function getStaticPaths() {
   const content = await DataFetcher();
@@ -31,13 +16,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { language } }: PageParams) {
-  const content = await DataFetcher();
+const getStaticProps = fetchDataToStaticProps();
 
-  return {
-    props: {
-      content: content.filter((node) => node.language.code === language)[0],
-      languages: content.reduce((memo, node) => [...memo, node.language], []),
-    },
-  };
-}
+export default LayoutHOC(Index);
+export { getStaticProps };

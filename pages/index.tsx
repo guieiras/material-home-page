@@ -1,40 +1,23 @@
-import Head from 'next/head';
 import React from 'react';
 
+import { fetchDataToStaticProps } from '../src/cms';
+import { useCMS } from '../src/components/content';
 import HomeProfile from '../src/components/Home/Profile';
 import HomeProfileLinkCards from '../src/components/Home/ProfileLinkCards';
-import Layout from '../src/components/Layout';
-import { I18nProvider } from '../src/i18n';
-import CMSContent from '../src/interfaces';
-import Language from '../src/interfaces/language';
-import DataFetcher from '../src/services/fetcher';
+import LayoutHOC from '../src/components/Layout/HOC';
 
-interface PageProps {
-  content: CMSContent;
-  languages: Language[];
-}
+export function Index(): JSX.Element {
+  const content = useCMS();
 
-export default function Index({ content, languages }: PageProps): JSX.Element {
   return (
-    <I18nProvider language={content.language.code}>
-      <Head>
-        <title>{content.profile.name}</title>
-      </Head>
-      <Layout siteName={content.profile.siteName} currentLanguage={content.language.code} languages={languages}>
-        <HomeProfile profile={content.profile} />
-        <HomeProfileLinkCards cards={content.homeCards} />
-      </Layout>
-    </I18nProvider>
+    <>
+      <HomeProfile profile={content.profile} />
+      <HomeProfileLinkCards cards={content.homeCards} />
+    </>
   );
 }
 
-export async function getStaticProps() {
-  const content = await DataFetcher();
+const getStaticProps = fetchDataToStaticProps();
 
-  return {
-    props: {
-      content: content.filter((node) => node.language.default)[0],
-      languages: content.reduce((memo, node) => [...memo, node.language], []),
-    },
-  };
-}
+export default LayoutHOC(Index);
+export { getStaticProps };
