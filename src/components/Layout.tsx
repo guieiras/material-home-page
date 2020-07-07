@@ -1,11 +1,10 @@
-import { makeStyles, Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Flags from 'country-flag-icons/react/3x2';
 import React from 'react';
 
 import Language from '../interfaces/language';
 
+import LayoutFooter from './Layout/Footer';
 import Navbar from './Navbar';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,25 +49,7 @@ export default function Layout({ children, currentLanguage, languages, siteName 
       <Navbar siteName={siteName} />
       <Container maxWidth="md" className={classes.root}>
         {children}
-        <footer className={classes.footer}>
-          <Grid container justify="center">
-            {languages.map((lang) => {
-              const FlagComponent = Flags[lang.code.split('-')[1]];
-              return lang.code === currentLanguage ? (
-                <span className={classes.languageSpan}>
-                  <FlagComponent className={classes.flag} />
-                </span>
-              ) : (
-                <a href={lang.default ? '/' : `/${lang.code}`} className={classes.languageLink}>
-                  <FlagComponent className={classes.flag} />
-                </a>
-              );
-            })}
-          </Grid>
-          <Typography variant="body2" color="textSecondary">
-            {siteName} &copy; {new Date().getFullYear()}
-          </Typography>
-        </footer>
+        <LayoutFooter currentLanguage={currentLanguage} languages={languages} siteName={siteName} />
       </Container>
     </>
   );
