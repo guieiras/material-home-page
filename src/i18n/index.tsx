@@ -19,6 +19,7 @@ export interface I18nLanguage {
     resume: {
       title: string;
       experiences: string;
+      formation: string;
     };
   };
   components: {

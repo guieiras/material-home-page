@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-block',
     width: theme.spacing(4),
     height: theme.spacing(4),
-    marginRight: 5,
+    marginRight: 8,
   },
   company: {
     display: 'flex',

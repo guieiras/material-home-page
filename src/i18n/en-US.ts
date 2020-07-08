@@ -11,6 +11,7 @@ const texts: I18nLanguage = {
     resume: {
       title: 'Resume',
       experiences: 'Profissional Experiences',
+      formation: 'Academic Formation',
     },
   },
   components: {
