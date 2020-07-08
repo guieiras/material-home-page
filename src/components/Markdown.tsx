@@ -10,7 +10,7 @@ const options = {
     h3: { component: Typography, props: { variant: 'h3' } },
     h4: { component: Typography, props: { variant: 'h4' } },
     span: { component: Typography, props: { variant: 'caption', paragraph: true } },
-    p: { component: Typography, props: { variant: 'body1', paragraph: true } },
+    p: { component: Typography, props: { variant: 'body2', paragraph: true } },
     a: { component: Link },
   },
 };

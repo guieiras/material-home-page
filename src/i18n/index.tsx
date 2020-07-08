@@ -11,6 +11,15 @@ function getTexts(language: string): I18nLanguage {
 }
 
 export interface I18nLanguage {
+  date: {
+    locale: Record<string, unknown>;
+    current: string;
+  };
+  pages: {
+    resume: {
+      experiences: string;
+    };
+  };
   components: {
     navbar: {
       resume: string;

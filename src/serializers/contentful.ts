@@ -4,6 +4,7 @@ import CMSContent from '../interfaces';
 import Block from '../interfaces/block';
 import Skill from '../interfaces/skill';
 import { ContentfulEntries } from '../services/contentful';
+
 import ContentfulProfessionalSerializer from './contentful/professional';
 
 export interface ContentfulFile {
@@ -77,8 +78,7 @@ export default function ContentfulSerializer(response: ContentfulEntries[]): CMS
           description: fields.description as string,
         })),
       professional: ContentfulProfessionalSerializer(
-        node.content.items
-          .filter((item) => item.sys.contentType.sys.id === 'professional')
+        node.content.items.filter((item) => item.sys.contentType.sys.id === 'professional'),
       ),
       formation: node.content.items
         .filter((item) => item.sys.contentType.sys.id === 'academic')
