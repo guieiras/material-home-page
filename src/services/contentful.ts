@@ -12,6 +12,13 @@ export interface ContentfulLink {
   linkType: string;
 }
 
+export interface ContentfulSystemObject {
+  id: string;
+  contentType: { sys: ContentfulLink };
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface ContentfulEntries {
   locale: {
     code: string;
@@ -19,12 +26,7 @@ export interface ContentfulEntries {
   };
   content: {
     items: {
-      sys: {
-        id: string;
-        contentType: { sys: ContentfulLink };
-        createdAt: string;
-        updatedAt: string;
-      };
+      sys: ContentfulSystemObject;
       fields: Record<string, unknown>;
     }[];
   };

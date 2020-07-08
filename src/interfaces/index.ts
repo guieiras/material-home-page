@@ -5,7 +5,7 @@ import HomeCard from './homeCard';
 import Language from './language';
 import Post from './post';
 import Profile from './profile';
-import Skill from './skill';
+import SkillGroup from './skillGroup';
 
 export default interface CMSContent {
   language: Language;
@@ -13,7 +13,7 @@ export default interface CMSContent {
   homeCards: HomeCard[];
   professional: ProfessionalExperience[];
   formation: AcademicFormation[];
-  skills: Record<string, Skill[]>;
+  skills: SkillGroup[];
   blocks: Record<string, Block>;
   posts: Post[];
 }

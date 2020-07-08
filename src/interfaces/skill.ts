@@ -1,6 +1,13 @@
+type Tag =
+  | 'interested'
+  | 'notInterested'
+  | 'beginner'
+  | 'intermediary'
+  | 'advanced'
+  | '4fun'
+  | 'professionalExperience';
+
 export default interface Skill {
   name: string;
-  level: number;
-  priority: number;
-  icon: string;
+  tags: Tag[];
 }

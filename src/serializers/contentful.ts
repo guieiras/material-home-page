@@ -2,10 +2,10 @@ import { compareDesc, parseISO } from 'date-fns';
 
 import CMSContent from '../interfaces';
 import Block from '../interfaces/block';
-import Skill from '../interfaces/skill';
 import { ContentfulEntries } from '../services/contentful';
 
 import ContentfulProfessionalSerializer from './contentful/professional';
+import ContentfulSkillSerializer from './contentful/skills';
 
 export interface ContentfulFile {
   sys: {
@@ -41,7 +41,6 @@ const initialProfile = {
   },
 };
 
-const initialSkills: Record<string, Skill[]> = {};
 const initialBlocks: Record<string, Block> = {};
 
 export default function ContentfulSerializer(response: ContentfulEntries[]): CMSContent[] {
@@ -91,28 +90,7 @@ export default function ContentfulSerializer(response: ContentfulEntries[]): CMS
           endYear: fields.endYear as number,
           description: fields.description as string,
         })),
-      skills: node.content.items
-        .filter((item) => item.sys.contentType.sys.id === 'skills')
-        .sort(
-          (a, b) =>
-            (a.fields.level as number) - (b.fields.level as number) ||
-            (a.fields.priority as number) - (b.fields.priority as number),
-        )
-        .reduce(
-          (memo, { fields }) => ({
-            ...memo,
-            [fields.level ? fields.level.toString() : 'soft']: [
-              ...(memo[fields.level && fields.level.toString()] || []),
-              {
-                name: fields.skill as string,
-                icon: fields.icon as string,
-                level: fields.level as number,
-                priority: fields.priority as number,
-              },
-            ],
-          }),
-          initialSkills,
-        ),
+      skills: ContentfulSkillSerializer(node.content.items.filter((item) => item.sys.contentType.sys.id === 'skills')),
       blocks: node.content.items
         .filter((item) => item.sys.contentType.sys.id === 'block')
         .reduce(
