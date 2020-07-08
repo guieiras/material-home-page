@@ -51,7 +51,7 @@ export default function Navbar({ siteName }: ComponentProps): JSX.Element {
         <Typography variant="h6" className={classes.title}>
           {siteName}
         </Typography>
-        <NavbarLink href="resume" text={texts.components.navbar.resume} icon={<FileAccount aria-hidden="true" />} />
+        <NavbarLink href="resume" text={texts.pages.resume.title} icon={<FileAccount aria-hidden="true" />} />
         <NavbarLink href="portfolio" text={texts.components.navbar.portfolio} icon={<ToyBrick aria-hidden="true" />} />
         <NavbarLink href="blog" text={texts.components.navbar.blog} icon={<Post aria-hidden="true" />} />
       </Toolbar>

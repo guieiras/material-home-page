@@ -17,12 +17,12 @@ export interface I18nLanguage {
   };
   pages: {
     resume: {
+      title: string;
       experiences: string;
     };
   };
   components: {
     navbar: {
-      resume: string;
       portfolio: string;
       blog: string;
     };

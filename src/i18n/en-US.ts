@@ -9,12 +9,12 @@ const texts: I18nLanguage = {
   },
   pages: {
     resume: {
+      title: 'Resume',
       experiences: 'Profissional Experiences',
     },
   },
   components: {
     navbar: {
-      resume: 'Resume',
       portfolio: 'Projects',
       blog: 'Blog',
     },
