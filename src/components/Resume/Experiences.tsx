@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 5,
   },
   listItem: {
+    marginBottom: '0.8em',
     padding: 0,
   },
 }));

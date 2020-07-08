@@ -48,7 +48,7 @@ export default function ResumeFormation({ formation }: ComponentProps) {
                 {education.startYear}-{education.endYear}
               </Typography>
             </Typography>
-            <Markdown>{education.description}</Markdown>
+            <Markdown>{education.description || ''}</Markdown>
           </ListItemText>
         </ListItem>
       ))}
