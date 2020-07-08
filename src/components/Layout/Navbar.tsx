@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,7 +10,7 @@ import ToyBrick from 'mdi-material-ui/ToyBrick';
 import propTypes from 'prop-types';
 import React from 'react';
 
-import { useI18n } from '../i18n';
+import { useI18n } from '../../i18n';
 
 interface LinkProps {
   href: string;
@@ -19,10 +20,13 @@ interface LinkProps {
 
 interface ComponentProps {
   siteName: string;
+  currentLanguage: string;
 }
 
 const useStyles = makeStyles(() => ({
   title: {
+    color: 'inherit',
+    textDecoration: 'none',
     flexGrow: 1,
   },
 }));
@@ -41,14 +45,14 @@ NavbarLink.propTypes = {
   icon: propTypes.element,
 };
 
-export default function Navbar({ siteName }: ComponentProps): JSX.Element {
+export default function LayoutNavbar({ currentLanguage, siteName }: ComponentProps): JSX.Element {
   const texts = useI18n();
   const classes = useStyles();
 
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+        <Typography component="a" href={`/${currentLanguage}`} variant="h6" className={classes.title}>
           {siteName}
         </Typography>
         <NavbarLink href="resume" text={texts.pages.resume.title} icon={<FileAccount aria-hidden="true" />} />

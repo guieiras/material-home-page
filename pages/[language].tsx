@@ -6,5 +6,5 @@ import { Index } from '.';
 const getStaticPaths = fetchDataToStaticPaths((_, staticPathsFor) => staticPathsFor({}));
 const getStaticProps = fetchDataToStaticProps();
 
-export default LayoutHOC(Index);
+export default LayoutHOC(Index, { path: '' });
 export { getStaticPaths, getStaticProps };

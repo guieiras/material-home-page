@@ -15,13 +15,26 @@ interface LayoutProps {
   };
 }
 
-export default function LayoutHOC(Component: React.FC) {
-  function ProjectedComponent({ layout: { content, languages } }: LayoutProps) {
+interface HOCOptions {
+  path?: string;
+}
+interface ComponentProps {
+  currentLanguagePath?: string;
+}
+export default function LayoutHOC(Component: React.FC<ComponentProps>, options: HOCOptions = {}) {
+  function ProjectedComponent({ layout: { content, currentLanguagePath, languages } }: LayoutProps) {
+    const currentPath = options.path;
     return (
       <I18nProvider language={content.language.code}>
         <CMSProvider content={content}>
-          <Layout siteName={content.profile.siteName} currentLanguage={content.language.code} languages={languages}>
-            <Component />
+          <Layout
+            siteName={content.profile.siteName}
+            currentLanguage={content.language.code}
+            currentLanguagePath={currentLanguagePath}
+            languages={languages}
+            currentPath={currentPath}
+          >
+            <Component currentLanguagePath={currentLanguagePath} />
           </Layout>
         </CMSProvider>
       </I18nProvider>

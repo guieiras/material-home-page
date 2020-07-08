@@ -30,9 +30,10 @@ interface LayoutProps {
   siteName: string;
   languages: Language[];
   currentLanguage: string;
+  currentPath: string;
 }
 
-export default function LayoutFooter({ currentLanguage, languages, siteName }: LayoutProps): JSX.Element {
+export default function LayoutFooter({ currentPath, currentLanguage, languages, siteName }: LayoutProps): JSX.Element {
   const classes = useStyles();
 
   return (
@@ -45,7 +46,13 @@ export default function LayoutFooter({ currentLanguage, languages, siteName }: L
               <FlagComponent className={classes.flag} />
             </span>
           ) : (
-            <a href={lang.default ? '/' : `/${lang.code}`} className={classes.languageLink} key={lang.code}>
+            <a
+              href={`/${lang.default ? '' : lang.code}/${currentPath || ''}`
+                .replace('//', '/')
+                .replace(/(?<=.)\/$/, '')}
+              className={classes.languageLink}
+              key={lang.code}
+            >
               <FlagComponent className={classes.flag} />
             </a>
           );

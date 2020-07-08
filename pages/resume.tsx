@@ -39,5 +39,5 @@ export function Resume(): JSX.Element {
 
 const getStaticProps = fetchDataToStaticProps();
 
-export default LayoutHOC(Resume);
+export default LayoutHOC(Resume, { path: 'resume' });
 export { getStaticProps };

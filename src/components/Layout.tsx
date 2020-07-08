@@ -5,7 +5,7 @@ import React from 'react';
 import Language from '../interfaces/language';
 
 import LayoutFooter from './Layout/Footer';
-import Navbar from './Navbar';
+import LayoutNavbar from './Layout/Navbar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,17 +39,31 @@ interface LayoutProps {
   siteName: string;
   languages: Language[];
   currentLanguage: string;
+  currentLanguagePath: string;
+  currentPath: string;
 }
 
-export default function Layout({ children, currentLanguage, languages, siteName }: LayoutProps): JSX.Element {
+export default function Layout({
+  children,
+  currentLanguage,
+  currentLanguagePath,
+  currentPath,
+  languages,
+  siteName,
+}: LayoutProps): JSX.Element {
   const classes = useStyles();
 
   return (
     <>
-      <Navbar siteName={siteName} />
+      <LayoutNavbar siteName={siteName} currentLanguage={currentLanguagePath} />
       <Container maxWidth="md" className={classes.root}>
         {children}
-        <LayoutFooter currentLanguage={currentLanguage} languages={languages} siteName={siteName} />
+        <LayoutFooter
+          currentPath={currentPath}
+          currentLanguage={currentLanguage}
+          languages={languages}
+          siteName={siteName}
+        />
       </Container>
     </>
   );

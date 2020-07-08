@@ -14,9 +14,10 @@ const useStyles = makeStyles(() => ({
 
 interface ComponentProps {
   cards: HomeCard[];
+  currentLanguagePath: string;
 }
 
-export default function HomeProfileLinkCards({ cards }: ComponentProps): JSX.Element {
+export default function HomeProfileLinkCards({ cards, currentLanguagePath }: ComponentProps): JSX.Element {
   const classes = useStyles();
 
   return (
@@ -26,7 +27,7 @@ export default function HomeProfileLinkCards({ cards }: ComponentProps): JSX.Ele
           <Card className={classes.card}>
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                <Link href={card.slug}>{card.name}</Link>
+                <Link href={`${currentLanguagePath && '/'}${currentLanguagePath}/${card.slug}`}>{card.name}</Link>
               </Typography>
               <Typography variant="body2" component="p">
                 {card.description}

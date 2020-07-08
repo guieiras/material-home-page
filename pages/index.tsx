@@ -6,18 +6,18 @@ import HomeProfile from '../src/components/Home/Profile';
 import HomeProfileLinkCards from '../src/components/Home/ProfileLinkCards';
 import LayoutHOC from '../src/components/Layout/HOC';
 
-export function Index(): JSX.Element {
+export function Index({ currentLanguagePath }: { currentLanguagePath: string }): JSX.Element {
   const content = useCMS();
 
   return (
     <>
       <HomeProfile profile={content.profile} />
-      <HomeProfileLinkCards cards={content.homeCards} />
+      <HomeProfileLinkCards currentLanguagePath={currentLanguagePath} cards={content.homeCards} />
     </>
   );
 }
 
 const getStaticProps = fetchDataToStaticProps();
 
-export default LayoutHOC(Index);
+export default LayoutHOC(Index, { path: '' });
 export { getStaticProps };
