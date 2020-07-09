@@ -13,13 +13,14 @@ interface ComponentProps {
 export default function SkillTag({ tag, className }: ComponentProps) {
   const text = useI18n().components.skill.tag[tag];
   const tagStyle = {
-    interested: { backgroundColor: colors.grey[300], color: colors.grey[900] },
-    notInterested: { backgroundColor: colors.grey[300], color: colors.grey[600] },
-    beginner: { backgroundColor: colors.grey[200], color: colors.grey[900] },
-    intermediary: { backgroundColor: colors.grey[300], color: colors.grey[900] },
-    advanced: { backgroundColor: colors.grey[400], color: colors.grey[900] },
-    forfun: { backgroundColor: colors.grey[200], color: colors.grey[900] },
-    professionalExperience: { backgroundColor: colors.grey[400], color: colors.grey[900] },
+    interested: { borderColor: colors.blue[500], color: colors.blue[500] },
+    notInterested: { borderColor: colors.grey[300], color: colors.grey[500] },
+    beginner: { borderColor: colors.teal[300], color: colors.teal[300] },
+    intermediary: { borderColor: colors.teal[500], color: colors.teal[500] },
+    advanced: { borderColor: colors.teal[800], color: colors.teal[800] },
+    forfun: { borderColor: colors.indigo[300], color: colors.indigo[300] },
+    professionalExperience: { borderColor: colors.indigo[500], color: colors.indigo[500] },
   }[tag];
-  return <Chip className={className} size="small" style={tagStyle} label={text} />;
+
+  return <Chip className={className} variant="outlined" size="small" style={tagStyle} label={text} />;
 }
