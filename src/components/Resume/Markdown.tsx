@@ -21,10 +21,13 @@ export default function Markdown(props: Props<unknown>) {
       h2: { component: Typography, props: { variant: 'h2' } },
       h3: { component: Typography, props: { variant: 'h3' } },
       h4: { component: Typography, props: { variant: 'h4' } },
-      span: { component: Typography, props: { color: 'textSecondary', variant: 'body1', paragraph: true } },
+      span: {
+        component: Typography,
+        props: { className: classes.paragraph, color: 'textSecondary', variant: 'body1', paragraph: true },
+      },
       p: {
         component: Typography,
-        props: { className: classes.paragraph, variant: 'body1', paragraph: true, color: 'textSecondary' },
+        props: { className: classes.paragraph, color: 'textSecondary', variant: 'body1', paragraph: true },
       },
       a: { component: Link },
     },

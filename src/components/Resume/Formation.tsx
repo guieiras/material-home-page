@@ -2,13 +2,17 @@ import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography, makeS
 import React from 'react';
 
 import AcademicFormation from '../../interfaces/formation';
-import Markdown from '../Markdown';
+
+import Markdown from './Markdown';
 
 interface ComponentProps {
   formation: AcademicFormation[];
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: theme.spacing(3),
+  },
   wrapper: {
     margin: 0,
   },
@@ -26,7 +30,7 @@ export default function ResumeFormation({ formation }: ComponentProps) {
   const classes = useStyles();
 
   return (
-    <List disablePadding>
+    <List disablePadding className={classes.root}>
       {formation.map((education, idx) => (
         <ListItem key={idx} disableGutters className={classes.listItem}>
           <ListItemAvatar>
@@ -36,7 +40,7 @@ export default function ResumeFormation({ formation }: ComponentProps) {
             <Typography variant="h6" className={classes.title}>
               {education.academy}
             </Typography>
-            <Typography component="p" variant="subtitle2" gutterBottom>
+            <Typography component="p" variant="subtitle1" gutterBottom>
               {education.title}{' '}
               <Typography component="span" variant="caption" color="textSecondary">
                 {education.startYear}-{education.endYear}
