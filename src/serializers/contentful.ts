@@ -104,6 +104,20 @@ export default function ContentfulSerializer(response: ContentfulEntries[]): CMS
           }),
           initialBlocks,
         ),
+      portfolio: node.content.items
+        .filter((item) => item.sys.contentType.sys.id === 'portfolio')
+        .sort((a, b) => (a.fields.order as number) - (b.fields.order as number))
+        .map(({ fields }) => ({
+          name: fields.name as string,
+          projectUrl: fields.projectUrl as string,
+          repositoryUrl: fields.repositoryUrl as string,
+          description: fields.description as string,
+          order: fields.order as number,
+          tags: (fields.tags as ContentfulEntries['content']['items'][0][]).map((tag) => ({
+            name: tag.fields.name as string,
+            color: tag.fields.color as string,
+          })),
+        })),
       posts: node.content.items
         .filter((item) => item.sys.contentType.sys.id === 'post')
         .sort((a, b) => compareDesc(parseISO(a.sys.createdAt), parseISO(b.sys.createdAt)))

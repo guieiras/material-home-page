@@ -4,6 +4,7 @@ import AcademicFormation from './formation';
 import HomeCard from './homeCard';
 import Language from './language';
 import Post from './post';
+import Portfolio from './portfolio';
 import Profile from './profile';
 import SkillGroup from './skillGroup';
 
@@ -15,5 +16,6 @@ export default interface CMSContent {
   formation: AcademicFormation[];
   skills: SkillGroup[];
   blocks: Record<string, Block>;
+  portfolio: Portfolio[];
   posts: Post[];
 }
