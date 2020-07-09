@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     marginTop: theme.spacing(4),
     minHeight: 'calc(100vh - 96px)',
-  }
+  },
 }));
 
 interface LayoutProps {

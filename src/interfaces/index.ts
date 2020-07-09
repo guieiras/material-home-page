@@ -3,8 +3,8 @@ import ProfessionalExperience from './experience';
 import AcademicFormation from './formation';
 import HomeCard from './homeCard';
 import Language from './language';
-import Post from './post';
 import Portfolio from './portfolio';
+import Post from './post';
 import Profile from './profile';
 import SkillGroup from './skillGroup';
 

@@ -39,6 +39,10 @@ export interface I18nLanguage {
         professionalExperience: string;
       };
     };
+    portfolio: {
+      project: string;
+      repository: string;
+    };
   };
 }
 

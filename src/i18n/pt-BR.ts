@@ -31,6 +31,10 @@ const texts: I18nLanguage = {
         professionalExperience: 'Uso profissional',
       },
     },
+    portfolio: {
+      project: 'Acessar',
+      repository: 'Ver código fonte',
+    },
   },
 };
 

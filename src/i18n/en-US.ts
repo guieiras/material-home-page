@@ -31,6 +31,10 @@ const texts: I18nLanguage = {
         professionalExperience: 'Work experience',
       },
     },
+    portfolio: {
+      project: 'Open',
+      repository: 'View source code',
+    },
   },
 };
 
