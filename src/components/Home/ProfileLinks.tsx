@@ -8,9 +8,9 @@ import React from 'react';
 
 import Profile from '../../interfaces/profile';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: 20,
+    marginBottom: theme.spacing(2),
   },
 }));
 

@@ -11,27 +11,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: 32,
+    marginTop: theme.spacing(4),
     minHeight: 'calc(100vh - 96px)',
-  },
-  footer: {
-    borderTop: `1px solid ${theme.palette.grey[300]}`,
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: 'auto',
-    padding: 32,
-    textAlign: 'center',
-  },
-  languageSpan: {
-    margin: '0 5px',
-  },
-  languageLink: {
-    margin: '0 5px',
-    opacity: 0.2,
-  },
-  flag: {
-    width: 30,
-  },
+  }
 }));
 
 interface LayoutProps {

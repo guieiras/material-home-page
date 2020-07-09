@@ -11,18 +11,18 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 'auto',
-    padding: 32,
+    padding: theme.spacing(4),
     textAlign: 'center',
   },
   languageSpan: {
-    margin: '0 5px',
+    margin: theme.spacing(0, 0.5),
   },
   languageLink: {
-    margin: '0 5px',
+    margin: theme.spacing(0, 0.5),
     opacity: 0.2,
   },
   flag: {
-    width: 30,
+    width: theme.spacing(4),
   },
 }));
 

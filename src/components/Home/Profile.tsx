@@ -8,13 +8,10 @@ import ContentfulRichText from '../ContentfulRichText';
 
 import ProfileLinks from './ProfileLinks';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    padding: 15,
-    marginBottom: 20,
-  },
-  caption: {
-    marginBottom: 20,
+    padding: theme.spacing(2),
+    marginBottom: theme.spacing(3),
   },
 }));
 

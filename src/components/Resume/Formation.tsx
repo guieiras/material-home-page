@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     lineHeight: 1,
-    marginBottom: 5,
+    marginBottom: theme.spacing(1),
   },
   listItem: {
     alignItems: 'flex-start',
