@@ -3,9 +3,9 @@ import React from 'react';
 
 import { useI18n } from '../../i18n';
 import ProfessionalExperience from '../../interfaces/experience';
-import Markdown from '../Markdown';
 
 import DateComponent from './DateComponent';
+import Markdown from './Markdown';
 
 interface ComponentProps {
   experiences: ProfessionalExperience[];
@@ -16,20 +16,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-block',
     width: theme.spacing(4),
     height: theme.spacing(4),
-    marginRight: 8,
+    marginRight: theme.spacing(1.5),
   },
   company: {
     display: 'flex',
-    verticalAlign: 'center',
+    marginTop: theme.spacing(3),
   },
   jobs: {
     display: 'flex',
   },
   list: {
-    marginTop: 5,
+    marginTop: theme.spacing(1),
   },
   listItem: {
-    marginBottom: '0.8em',
     padding: 0,
   },
 }));
@@ -52,7 +51,7 @@ export default function ResumeExperiences({ experiences }: ComponentProps) {
             {company.jobs.map((job, idx) => (
               <ListItem key={idx} disableGutters className={classes.listItem}>
                 <ListItemText>
-                  <Typography variant="subtitle2" gutterBottom>
+                  <Typography variant="subtitle1">
                     {job.title}{' '}
                     <Typography component="span" variant="caption" color="textSecondary">
                       (<DateComponent startDate={job.startDate} endDate={job.endDate} i18n={texts.date} />)

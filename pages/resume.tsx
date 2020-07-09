@@ -7,11 +7,15 @@ import { useCMS } from '../src/components/content';
 import LayoutHOC from '../src/components/Layout/HOC';
 import ResumeExperiences from '../src/components/Resume/Experiences';
 import ResumeFormation from '../src/components/Resume/Formation';
+import ResumeSkills from '../src/components/Resume/Skills';
 import { useI18n } from '../src/i18n';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
+  title: {
+    marginTop: theme.spacing(3),
+  },
   sectionHeader: {
-    marginBottom: 20,
+    marginTop: theme.spacing(5),
   },
 }));
 
@@ -22,7 +26,7 @@ export function Resume(): JSX.Element {
 
   return (
     <>
-      <Typography variant="h3" component="h1" className={classes.sectionHeader}>
+      <Typography variant="h3" component="h1" className={classes.title}>
         {texts.pages.resume.title}
       </Typography>
       <Typography variant="h5" component="h2" className={classes.sectionHeader}>
@@ -33,6 +37,10 @@ export function Resume(): JSX.Element {
         {texts.pages.resume.formation}
       </Typography>
       <ResumeFormation formation={content.formation} />
+      <Typography variant="h5" component="h2" className={classes.sectionHeader}>
+        {texts.pages.resume.skills}
+      </Typography>
+      <ResumeSkills skillsGroups={content.skills} />
     </>
   );
 }

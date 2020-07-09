@@ -8,19 +8,13 @@ interface ComponentProps {
   formation: AcademicFormation[];
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   wrapper: {
     margin: 0,
   },
   title: {
     lineHeight: 1,
     marginBottom: 5,
-  },
-  image: {
-    display: 'inline-block',
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    marginRight: 8,
   },
   listItem: {
     alignItems: 'flex-start',
@@ -36,7 +30,7 @@ export default function ResumeFormation({ formation }: ComponentProps) {
       {formation.map((education, idx) => (
         <ListItem key={idx} disableGutters className={classes.listItem}>
           <ListItemAvatar>
-            <Avatar variant="rounded" src={education.academyImage} className={classes.image} />
+            <Avatar variant="rounded" src={education.academyImage} />
           </ListItemAvatar>
           <ListItemText className={classes.wrapper}>
             <Typography variant="h6" className={classes.title}>
