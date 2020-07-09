@@ -4,7 +4,7 @@ type Tag =
   | 'beginner'
   | 'intermediary'
   | 'advanced'
-  | '4fun'
+  | 'forfun'
   | 'professionalExperience';
 
 export default interface Skill {

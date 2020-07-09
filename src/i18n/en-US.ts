@@ -12,12 +12,24 @@ const texts: I18nLanguage = {
       title: 'Resume',
       experiences: 'Profissional Experiences',
       formation: 'Academic Formation',
+      skills: 'Skills',
     },
   },
   components: {
     navbar: {
       portfolio: 'Projects',
       blog: 'Blog',
+    },
+    skill: {
+      tag: {
+        interested: 'Interested',
+        notInterested: 'Not interested',
+        beginner: 'Beginner',
+        intermediary: 'Intermediary',
+        advanced: 'Advanced',
+        forfun: '4fun',
+        professionalExperience: 'Work experience',
+      },
     },
   },
 };

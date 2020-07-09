@@ -20,12 +20,24 @@ export interface I18nLanguage {
       title: string;
       experiences: string;
       formation: string;
+      skills: string;
     };
   };
   components: {
     navbar: {
       portfolio: string;
       blog: string;
+    };
+    skill: {
+      tag: {
+        interested: string;
+        notInterested: string;
+        beginner: string;
+        intermediary: string;
+        advanced: string;
+        forfun: string;
+        professionalExperience: string;
+      };
     };
   };
 }

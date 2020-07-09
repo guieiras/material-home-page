@@ -12,12 +12,24 @@ const texts: I18nLanguage = {
       title: 'Currículo',
       experiences: 'Experiências Profissionais',
       formation: 'Formação Acadêmica',
+      skills: 'Habilidades',
     },
   },
   components: {
     navbar: {
       portfolio: 'Projetos',
       blog: 'Blog',
+    },
+    skill: {
+      tag: {
+        interested: 'Interessado',
+        notInterested: 'Não interessado',
+        beginner: 'Iniciante',
+        intermediary: 'Intermediário',
+        advanced: 'Avançado',
+        forfun: 'Diversão',
+        professionalExperience: 'Uso profissional',
+      },
     },
   },
 };
