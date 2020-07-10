@@ -16,6 +16,7 @@ import Block from '../src/interfaces/block';
 const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
   },
   list: {
     marginTop: theme.spacing(1),
