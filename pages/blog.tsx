@@ -38,11 +38,11 @@ export function Blog({ currentLanguagePath }: { currentLanguagePath: string }): 
 
   return (
     <>
-      <Meta title={`${(content.blocks.posts as Block).title} - ${content.profile.name}`} />
+      <Meta title={`${(content.blocks.blog as Block).title} - ${content.profile.name}`} />
       <Typography variant="h3" component="h1" className={classes.title}>
-        {(content.blocks.posts as Block).title}
+        {(content.blocks.blog as Block).title}
       </Typography>
-      {ContentfulRichText((content.blocks.posts as Block).content)}
+      {ContentfulRichText((content.blocks.blog as Block).content)}
       <List className={classes.list}>
         {content.posts.map((post) => (
           <ListItem key={post.slug} disableGutters className={classes.listItem}>
@@ -57,7 +57,7 @@ export function Blog({ currentLanguagePath }: { currentLanguagePath: string }): 
             <Typography variant="caption">
               {format(parseISO(post.createdAt), 'PPPP', { locale: texts.date.locale })}
             </Typography>
-            <Typography variant="subtitle1" className={classes.subtitle}>
+            <Typography variant="subtitle2" className={classes.subtitle}>
               {post.shortContent}
             </Typography>
           </ListItem>
