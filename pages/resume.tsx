@@ -5,6 +5,7 @@ import React from 'react';
 import { fetchDataToStaticProps } from '../src/cms';
 import { useCMS } from '../src/components/content';
 import LayoutHOC from '../src/components/Layout/HOC';
+import Meta from '../src/components/Layout/Meta';
 import ResumeExperiences from '../src/components/Resume/Experiences';
 import ResumeFormation from '../src/components/Resume/Formation';
 import ResumeSkills from '../src/components/Resume/Skills';
@@ -26,6 +27,7 @@ export function Resume(): JSX.Element {
 
   return (
     <>
+      <Meta title={`${texts.pages.resume.title} - ${content.profile.name}`} />
       <Typography variant="h3" component="h1" className={classes.title}>
         {texts.pages.resume.title}
       </Typography>

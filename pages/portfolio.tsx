@@ -11,6 +11,7 @@ import { fetchDataToStaticProps } from '../src/cms';
 import { useCMS } from '../src/components/content';
 import ContentfulRichText from '../src/components/ContentfulRichText';
 import LayoutHOC from '../src/components/Layout/HOC';
+import Meta from '../src/components/Layout/Meta';
 import PortfolioTag from '../src/components/PortfolioTag';
 import { useI18n } from '../src/i18n';
 import Block from '../src/interfaces/block';
@@ -46,6 +47,7 @@ export function Portfolio(): JSX.Element {
 
   return (
     <>
+      <Meta title={`${(content.blocks.portfolio as Block).title} - ${content.profile.name}`} />
       <Typography variant="h3" component="h1" className={classes.title}>
         {(content.blocks.portfolio as Block).title}
       </Typography>
