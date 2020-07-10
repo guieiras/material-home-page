@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from 'querystring';
+
 import { GetStaticPropsContext } from 'next';
 
 import CMSContent from '../interfaces';
@@ -5,7 +7,7 @@ import DataFetcher from '../services/fetcher';
 
 type StaticPaths = { paths: Record<string, unknown>[]; fallback: boolean };
 type StaticPathsFor = (params: Record<string, unknown>) => StaticPaths;
-type GetPropsFunction = (content?: CMSContent) => Promise<Record<string, unknown>>;
+type GetPropsFunction = (content?: CMSContent, params?: ParsedUrlQuery) => Promise<Record<string, unknown>>;
 type GetPathsFunction = (content?: CMSContent[], staticPathsFor?: StaticPathsFor) => StaticPaths;
 
 export function fetchDataToStaticProps(fn?: GetPropsFunction) {
@@ -17,7 +19,7 @@ export function fetchDataToStaticProps(fn?: GetPropsFunction) {
     const currentLanguagePath = language || '';
     const content = fullContent.filter((node) => node.language.code === currentLanguage)[0];
 
-    const customProps = await (fn ? fn(content) : Promise.resolve({}));
+    const customProps = await (fn ? fn(content, params) : Promise.resolve({}));
 
     return {
       props: {

@@ -38,7 +38,7 @@ export default function Layout({
   return (
     <>
       <LayoutNavbar siteName={siteName} currentLanguage={currentLanguagePath} />
-      <Container maxWidth="md" className={classes.root}>
+      <Container maxWidth="md" className={classes.root} component="main">
         {children}
         <LayoutFooter
           currentPath={currentPath}

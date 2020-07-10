@@ -8,7 +8,7 @@ import { CMSProvider } from '../content';
 
 import Meta from './Meta';
 
-interface LayoutProps {
+interface LayoutProps extends Record<string, unknown> {
   layout: {
     content: CMSContent;
     currentLanguage: string;
@@ -20,12 +20,16 @@ interface LayoutProps {
 interface HOCOptions {
   path?: string;
 }
-interface ComponentProps {
+type HOCOptionsFunction = (params: Record<string, unknown>) => HOCOptions;
+interface ComponentProps extends Record<string, unknown> {
   currentLanguagePath?: string;
 }
-export default function LayoutHOC(Component: React.FC<ComponentProps>, options: HOCOptions = {}) {
-  function ProjectedComponent({ layout: { content, currentLanguagePath, languages } }: LayoutProps) {
-    const currentPath = options.path;
+export default function LayoutHOC(Component: React.FC<ComponentProps>, options: HOCOptions | HOCOptionsFunction = {}) {
+  function ProjectedComponent(params: LayoutProps) {
+    const {
+      layout: { content, currentLanguagePath, languages },
+    } = params;
+    const currentPath = (typeof options === 'function' ? options(params) : options).path;
     return (
       <I18nProvider language={content.language.code}>
         <CMSProvider content={content}>
@@ -37,7 +41,7 @@ export default function LayoutHOC(Component: React.FC<ComponentProps>, options: 
             languages={languages}
             currentPath={currentPath}
           >
-            <Component currentLanguagePath={currentLanguagePath} />
+            <Component currentLanguagePath={currentLanguagePath} {...params} />
           </Layout>
         </CMSProvider>
       </I18nProvider>
