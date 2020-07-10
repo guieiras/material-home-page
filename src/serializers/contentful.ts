@@ -121,12 +121,13 @@ export default function ContentfulSerializer(response: ContentfulEntries[]): CMS
       posts: node.content.items
         .filter((item) => item.sys.contentType.sys.id === 'post')
         .sort((a, b) => compareDesc(parseISO(a.sys.createdAt), parseISO(b.sys.createdAt)))
-        .map(({ fields }) => ({
+        .map(({ sys, fields }) => ({
           title: fields.title as string,
           author: fields.author as string,
           slug: fields.slug as string,
           shortContent: fields.shortContent as string,
           content: fields.content as Record<string, unknown>,
+          createdAt: sys.createdAt,
         })),
     };
   });

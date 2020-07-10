@@ -4,4 +4,5 @@ export default interface Post {
   slug: string;
   shortContent: string;
   content: Record<string, unknown>;
+  createdAt: string;
 }
