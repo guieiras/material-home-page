@@ -3,6 +3,7 @@ export default interface Profile {
   title: string;
   siteName: string;
   bio: Record<string, unknown>;
+  profilePicture?: string;
   social: {
     email?: string;
     facebook?: string;

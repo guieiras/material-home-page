@@ -57,6 +57,7 @@ export default function ContentfulSerializer(response: ContentfulEntries[]): CMS
             name: (fields.name as string) || node.name,
             title: (fields.title as string) || node.title,
             siteName: (fields.siteName as string) || node.siteName,
+            profilePicture: fields.profilePicture && (fields.profilePicture as ContentfulFile).fields.file.url,
             bio: fields.bio || node.bio,
             social: {
               email: fields.email || node.social.email,
