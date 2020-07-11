@@ -5,9 +5,13 @@ import React from 'react';
 import theme from '../src/components/theme';
 
 export default class AppDocument extends Document {
+  get lang(): string {
+    return (this.props.__NEXT_DATA__.props.pageProps?.layout?.currentLanguage || '').split('-')[0];
+  }
+
   render(): JSX.Element {
     return (
-      <Html>
+      <Html lang={this.lang}>
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -15,7 +19,7 @@ export default class AppDocument extends Document {
         </Head>
         <body>
           <Main />
-          <NextScript />
+          {this.props.isDevelopment && <NextScript />}
         </body>
       </Html>
     );
