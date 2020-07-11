@@ -23,7 +23,7 @@ interface TextComponentProps {
     | 'srOnly';
 }
 
-function TextComponent({ component, variant }: TextComponentProps) {
+export function TextComponent({ component, variant }: TextComponentProps) {
   return function TypographyComponent(_, children: JSX.Element): JSX.Element {
     return (
       <Typography gutterBottom component={component} variant={variant}>
@@ -33,7 +33,7 @@ function TextComponent({ component, variant }: TextComponentProps) {
   };
 }
 
-const options = {
+const defaultOptions = {
   renderNode: {
     [BLOCKS.HEADING_1]: TextComponent({ component: 'h1', variant: 'h1' }),
     [BLOCKS.HEADING_2]: TextComponent({ component: 'h2', variant: 'h2' }),
@@ -45,6 +45,6 @@ const options = {
   },
 };
 
-export default function ContentfulRichText(object) {
+export default function ContentfulRichText(object, options = defaultOptions) {
   return documentToReactComponents(object, options);
 }
