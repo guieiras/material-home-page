@@ -10,6 +10,7 @@ import propTypes from 'prop-types';
 import React from 'react';
 
 import { useI18n } from '../../i18n';
+import pathBuilder from '../../util/pathBuilder';
 
 interface LinkProps {
   href: string;
@@ -54,9 +55,21 @@ export default function LayoutNavbar({ currentLanguage, siteName }: ComponentPro
         <Typography component="a" href={`/${currentLanguage}`} variant="h6" className={classes.title}>
           {siteName}
         </Typography>
-        <NavbarLink href="resume" text={texts.pages.resume.title} icon={<FileAccount aria-hidden="true" />} />
-        <NavbarLink href="portfolio" text={texts.components.navbar.portfolio} icon={<ToyBrick aria-hidden="true" />} />
-        <NavbarLink href="blog" text={texts.components.navbar.blog} icon={<Post aria-hidden="true" />} />
+        <NavbarLink
+          href={pathBuilder(currentLanguage, 'resume')}
+          text={texts.pages.resume.title}
+          icon={<FileAccount aria-hidden="true" />}
+        />
+        <NavbarLink
+          href={pathBuilder(currentLanguage, 'portfolio')}
+          text={texts.components.navbar.portfolio}
+          icon={<ToyBrick aria-hidden="true" />}
+        />
+        <NavbarLink
+          href={pathBuilder(currentLanguage, 'blog')}
+          text={texts.components.navbar.blog}
+          icon={<Post aria-hidden="true" />}
+        />
       </Toolbar>
     </AppBar>
   );

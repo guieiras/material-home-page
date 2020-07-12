@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
 import HomeCard from '../../interfaces/homeCard';
+import pathBuilder from '../../util/pathBuilder';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -27,7 +28,7 @@ export default function HomeProfileLinkCards({ cards, currentLanguagePath }: Com
           <Card className={classes.card}>
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                <Link href={`${currentLanguagePath && '/'}${currentLanguagePath}/${card.slug}`}>{card.name}</Link>
+                <Link href={pathBuilder(currentLanguagePath, card.slug)}>{card.name}</Link>
               </Typography>
               <Typography variant="body2" component="p">
                 {card.description}

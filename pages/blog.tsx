@@ -12,6 +12,7 @@ import LayoutHOC from '../src/components/Layout/HOC';
 import Meta from '../src/components/Layout/Meta';
 import { useI18n } from '../src/i18n';
 import Block from '../src/interfaces/block';
+import pathBuilder from '../src/util/pathBuilder';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -50,7 +51,7 @@ export function Blog({ currentLanguagePath }: { currentLanguagePath: string }): 
               component="a"
               color="primary"
               variant="h6"
-              href={`${currentLanguagePath && '/' + currentLanguagePath}/posts/${post.slug}`}
+              href={pathBuilder(currentLanguagePath, 'posts', post.slug)}
             >
               {post.title}
             </Typography>
