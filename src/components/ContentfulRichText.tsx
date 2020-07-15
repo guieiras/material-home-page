@@ -21,12 +21,15 @@ interface TextComponentProps {
     | 'body2'
     | 'overline'
     | 'srOnly';
+  margins?: [number, number];
 }
 
-export function TextComponent({ component, variant }: TextComponentProps) {
+export function TextComponent({ component, variant, margins }: TextComponentProps) {
+  const marginTop = (margins && margins[0]) || 8;
+  const marginBottom = (margins && margins[1]) || 0;
   return function TypographyComponent(_, children: JSX.Element): JSX.Element {
     return (
-      <Typography gutterBottom component={component} variant={variant}>
+      <Typography component={component} variant={variant} style={{ marginTop, marginBottom }}>
         {children}
       </Typography>
     );
