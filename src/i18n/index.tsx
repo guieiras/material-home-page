@@ -3,7 +3,7 @@ import React from 'react';
 import enUS from './en-US';
 import ptBR from './pt-BR';
 
-function getTexts(language: string): I18nLanguage {
+export function getTexts(language: string): I18nLanguage {
   return {
     'en-US': enUS,
     'pt-BR': ptBR,
@@ -11,23 +11,19 @@ function getTexts(language: string): I18nLanguage {
 }
 
 export interface I18nLanguage {
+  linkToLanguage: string;
   date: {
     locale: Record<string, unknown>;
     current: string;
   };
   pages: {
     resume: {
-      title: string;
       experiences: string;
       formation: string;
       skills: string;
     };
   };
   components: {
-    navbar: {
-      portfolio: string;
-      blog: string;
-    };
     skill: {
       tag: {
         interested: string;

@@ -1,8 +1,8 @@
-import Block from './block';
 import ProfessionalExperience from './experience';
 import AcademicFormation from './formation';
 import HomeCard from './homeCard';
 import Language from './language';
+import Page from './page';
 import Portfolio from './portfolio';
 import Post from './post';
 import Profile from './profile';
@@ -15,7 +15,8 @@ export default interface CMSContent {
   professional: ProfessionalExperience[];
   formation: AcademicFormation[];
   skills: SkillGroup[];
-  blocks: Record<string, Block>;
+  pages: Record<string, Page>;
   portfolio: Portfolio[];
   posts: Post[];
+  settings: Record<string, string>;
 }

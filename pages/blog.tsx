@@ -11,7 +11,6 @@ import ContentfulRichText from '../src/components/ContentfulRichText';
 import LayoutHOC from '../src/components/Layout/HOC';
 import Meta from '../src/components/Layout/Meta';
 import { useI18n } from '../src/i18n';
-import Block from '../src/interfaces/block';
 import pathBuilder from '../src/util/pathBuilder';
 
 const useStyles = makeStyles((theme) => ({
@@ -39,11 +38,14 @@ export function Blog({ currentLanguagePath }: { currentLanguagePath: string }): 
 
   return (
     <>
-      <Meta title={`${(content.blocks.blog as Block).title} - ${content.profile.name}`} />
+      <Meta
+        title={`${content.pages.blog.title} - ${content.profile.name}`}
+        description={content.pages.blog.description}
+      />
       <Typography variant="h3" component="h1" className={classes.title}>
-        {(content.blocks.blog as Block).title}
+        {content.pages.blog.title}
       </Typography>
-      {ContentfulRichText((content.blocks.blog as Block).content)}
+      {ContentfulRichText(content.pages.blog.content)}
       <List className={classes.list}>
         {content.posts.map((post) => (
           <ListItem key={post.slug} disableGutters className={classes.listItem}>

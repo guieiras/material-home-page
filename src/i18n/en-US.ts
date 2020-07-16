@@ -3,23 +3,19 @@ import { enUS } from 'date-fns/locale';
 import { I18nLanguage } from '.';
 
 const texts: I18nLanguage = {
+  linkToLanguage: 'view in english',
   date: {
     locale: enUS,
     current: 'present',
   },
   pages: {
     resume: {
-      title: 'Resume',
       experiences: 'Profissional Experiences',
       formation: 'Academic Formation',
       skills: 'Skills',
     },
   },
   components: {
-    navbar: {
-      portfolio: 'Projects',
-      blog: 'Blog',
-    },
     skill: {
       tag: {
         interested: 'Interested',

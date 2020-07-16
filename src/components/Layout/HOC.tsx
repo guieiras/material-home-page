@@ -6,8 +6,6 @@ import CMSContent from '../../interfaces';
 import Language from '../../interfaces/language';
 import { CMSProvider } from '../content';
 
-import Meta from './Meta';
-
 interface LayoutProps extends Record<string, unknown> {
   layout: {
     content: CMSContent;
@@ -33,9 +31,8 @@ export default function LayoutHOC(Component: React.FC<ComponentProps>, options: 
     return (
       <I18nProvider language={content.language.code}>
         <CMSProvider content={content}>
-          <Meta title={content.profile.name} siteName={content.profile.name} />
           <Layout
-            siteName={content.profile.siteName}
+            siteName={content.settings.siteName}
             currentLanguage={content.language.code}
             currentLanguagePath={currentLanguagePath}
             languages={languages}

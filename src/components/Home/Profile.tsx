@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
+import Page from '../../interfaces/page';
 import Profile from '../../interfaces/profile';
 import ContentfulRichText from '../ContentfulRichText';
 
@@ -35,9 +36,10 @@ const useStyles = makeStyles((theme) => ({
 
 interface ComponentProps {
   profile: Profile;
+  page: Page;
 }
 
-export default function HomeProfile({ profile }: ComponentProps): JSX.Element {
+export default function HomeProfile({ profile, page }: ComponentProps): JSX.Element {
   const classes = useStyles();
 
   return (
@@ -53,7 +55,7 @@ export default function HomeProfile({ profile }: ComponentProps): JSX.Element {
         <ProfileLinks profile={profile} />
       </div>
 
-      {ContentfulRichText(profile.bio)}
+      {ContentfulRichText(page.content)}
     </Paper>
   );
 }

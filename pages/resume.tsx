@@ -4,6 +4,7 @@ import React from 'react';
 
 import { fetchDataToStaticProps } from '../src/cms';
 import { useCMS } from '../src/components/content';
+import ContentfulRichText from '../src/components/ContentfulRichText';
 import LayoutHOC from '../src/components/Layout/HOC';
 import Meta from '../src/components/Layout/Meta';
 import ResumeExperiences from '../src/components/Resume/Experiences';
@@ -27,10 +28,14 @@ export function Resume(): JSX.Element {
 
   return (
     <>
-      <Meta title={`${texts.pages.resume.title} - ${content.profile.name}`} />
+      <Meta
+        title={`${content.pages.resume.title} - ${content.profile.name}`}
+        description={content.pages.resume.description}
+      />
       <Typography variant="h3" component="h1" className={classes.title}>
-        {texts.pages.resume.title}
+        {content.pages.resume.title}
       </Typography>
+      {ContentfulRichText(content.pages.resume.content)}
       <Typography variant="h5" component="h2" className={classes.sectionHeader}>
         {texts.pages.resume.experiences}
       </Typography>

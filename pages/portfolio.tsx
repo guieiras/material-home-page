@@ -14,7 +14,6 @@ import LayoutHOC from '../src/components/Layout/HOC';
 import Meta from '../src/components/Layout/Meta';
 import PortfolioTag from '../src/components/PortfolioTag';
 import { useI18n } from '../src/i18n';
-import Block from '../src/interfaces/block';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -48,11 +47,14 @@ export function Portfolio(): JSX.Element {
 
   return (
     <>
-      <Meta title={`${(content.blocks.portfolio as Block).title} - ${content.profile.name}`} />
+      <Meta
+        title={`${content.pages.portfolio.title} - ${content.profile.name}`}
+        description={content.pages.portfolio.description}
+      />
       <Typography variant="h3" component="h1" className={classes.title}>
-        {(content.blocks.portfolio as Block).title}
+        {content.pages.portfolio.title}
       </Typography>
-      {ContentfulRichText((content.blocks.portfolio as Block).content)}
+      {ContentfulRichText(content.pages.portfolio.content)}
       <Grid container spacing={2} className={classes.grid}>
         {content.portfolio.map((project) => (
           <Grid item xs={12} sm={6} key={project.projectUrl}>

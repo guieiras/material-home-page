@@ -3,7 +3,9 @@ import Typography from '@material-ui/core/Typography';
 import Flags from 'country-flag-icons/react/3x2';
 import React from 'react';
 
+import { getTexts } from '../../i18n';
 import Language from '../../interfaces/language';
+import pathBuilder from '../../util/pathBuilder';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -47,10 +49,9 @@ export default function LayoutFooter({ currentPath, currentLanguage, languages, 
             </span>
           ) : (
             <a
-              href={`/${lang.default ? '' : lang.code}/${currentPath || ''}`
-                .replace('//', '/')
-                .replace(/(?<=.)\/$/, '')}
+              href={pathBuilder(lang.default ? '' : lang.code, currentPath)}
               className={classes.languageLink}
+              title={getTexts(lang.code).linkToLanguage}
               key={lang.code}
             >
               <FlagComponent className={classes.flag} />

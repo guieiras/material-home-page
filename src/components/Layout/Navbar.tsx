@@ -9,8 +9,8 @@ import ToyBrick from 'mdi-material-ui/ToyBrick';
 import propTypes from 'prop-types';
 import React from 'react';
 
-import { useI18n } from '../../i18n';
 import pathBuilder from '../../util/pathBuilder';
+import { useCMS } from '../content';
 
 interface LinkProps {
   href: string;
@@ -46,7 +46,7 @@ NavbarLink.propTypes = {
 };
 
 export default function LayoutNavbar({ currentLanguage, siteName }: ComponentProps): JSX.Element {
-  const texts = useI18n();
+  const content = useCMS();
   const classes = useStyles();
 
   return (
@@ -55,21 +55,27 @@ export default function LayoutNavbar({ currentLanguage, siteName }: ComponentPro
         <Typography component="a" href={`/${currentLanguage}`} variant="h6" className={classes.title}>
           {siteName}
         </Typography>
-        <NavbarLink
-          href={pathBuilder(currentLanguage, 'resume')}
-          text={texts.pages.resume.title}
-          icon={<FileAccount aria-hidden="true" />}
-        />
-        <NavbarLink
-          href={pathBuilder(currentLanguage, 'portfolio')}
-          text={texts.components.navbar.portfolio}
-          icon={<ToyBrick aria-hidden="true" />}
-        />
-        <NavbarLink
-          href={pathBuilder(currentLanguage, 'blog')}
-          text={texts.components.navbar.blog}
-          icon={<Post aria-hidden="true" />}
-        />
+        {content.pages.resume && (
+          <NavbarLink
+            href={pathBuilder(currentLanguage, 'resume')}
+            text={content.pages.resume.title}
+            icon={<FileAccount aria-hidden="true" />}
+          />
+        )}
+        {content.pages.portfolio && (
+          <NavbarLink
+            href={pathBuilder(currentLanguage, 'portfolio')}
+            text={content.pages.portfolio.title}
+            icon={<ToyBrick aria-hidden="true" />}
+          />
+        )}
+        {content.pages.blog && (
+          <NavbarLink
+            href={pathBuilder(currentLanguage, 'blog')}
+            text={content.pages.blog.title}
+            icon={<Post aria-hidden="true" />}
+          />
+        )}
       </Toolbar>
     </AppBar>
   );
