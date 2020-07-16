@@ -1,0 +1,68 @@
+{
+  "name": "Academic Formation",
+  "description": "",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "academy",
+      "name": "academy",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "academyImage",
+      "name": "academy image",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Asset"
+    },
+    {
+      "id": "title",
+      "name": "title",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "startYear",
+      "name": "start year",
+      "type": "Integer",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "endYear",
+      "name": "end year",
+      "type": "Integer",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "description",
+      "name": "description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}

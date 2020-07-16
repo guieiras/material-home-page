@@ -1,0 +1,48 @@
+{
+  "name": "Author",
+  "description": "",
+  "displayField": "name",
+  "fields": [
+    {
+      "id": "name",
+      "name": "name",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "title",
+      "name": "title",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "profilePicture",
+      "name": "profilePicture",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Asset"
+    },
+    {
+      "id": "default",
+      "name": "default",
+      "type": "Boolean",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}

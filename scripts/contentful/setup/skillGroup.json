@@ -1,0 +1,27 @@
+{
+  "name": "Skill Group",
+  "description": "",
+  "displayField": "name",
+  "fields": [
+    {
+      "id": "name",
+      "name": "name",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "order",
+      "name": "order",
+      "type": "Integer",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}

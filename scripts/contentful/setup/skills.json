@@ -1,0 +1,60 @@
+{
+  "name": "Skill",
+  "description": "",
+  "displayField": "skill",
+  "fields": [
+    {
+      "id": "skill",
+      "name": "skill",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "group",
+      "name": "group",
+      "type": "Link",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "linkContentType": [
+            "skillGroup"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Entry"
+    },
+    {
+      "id": "tags",
+      "name": "tags",
+      "type": "Array",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "items": {
+        "type": "Symbol",
+        "validations": [
+          {
+            "in": [
+              "interested",
+              "notInterested",
+              "beginner",
+              "intermediary",
+              "advanced",
+              "forfun",
+              "professionalExperience"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

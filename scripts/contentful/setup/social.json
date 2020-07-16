@@ -1,0 +1,27 @@
+{
+  "name": "Social",
+  "description": "",
+  "displayField": "name",
+  "fields": [
+    {
+      "id": "name",
+      "name": "name",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "value",
+      "name": "value",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}

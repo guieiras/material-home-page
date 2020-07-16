@@ -1,0 +1,27 @@
+{
+  "name": "Setting",
+  "description": "",
+  "displayField": "key",
+  "fields": [
+    {
+      "id": "key",
+      "name": "key",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "value",
+      "name": "value",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}

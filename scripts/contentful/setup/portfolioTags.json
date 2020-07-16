@@ -1,0 +1,27 @@
+{
+  "name": "Portfolio Tag",
+  "description": "",
+  "displayField": "name",
+  "fields": [
+    {
+      "id": "name",
+      "name": "name",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "color",
+      "name": "color",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}

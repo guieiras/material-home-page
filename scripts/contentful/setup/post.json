@@ -1,0 +1,61 @@
+{
+  "name": "Post",
+  "description": "",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "title",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "author",
+      "name": "author",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "slug",
+      "name": "slug",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "shortContent",
+      "name": "shortContent",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "content",
+      "name": "content",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "validations": [
+        {
+          "nodes": {}
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}
