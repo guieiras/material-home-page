@@ -19,7 +19,7 @@
 
 3.  **Bootstrap Contentful content types and default content**
 
-  Get your Contentful Management key on https://app.contentful.com/spaces/[YOUR SPACE ID]/api/cma_tokens. Remember to set it on `CONTENTFUL_MANAGEMENT_ACCESS_TOKEN` environment variable.
+  Get your Contentful Management key on `https://app.contentful.com/spaces/[YOUR SPACE ID]/api/cma_tokens`. Remember to set it on `CONTENTFUL_MANAGEMENT_ACCESS_TOKEN` environment variable.
 
   Run `yarn contentful:setup` to prepare your space with content types.
 
@@ -30,3 +30,12 @@
 4.  **Write your content and deploy it!**
 
   After writing your content on CMS, you can run `yarn build` and deploy `out/` folder to your preferred static asset server.
+
+##  📄 Page structure
+
+This application contains 4 main pages:
+  - `/`: Initial page includes author details, home cards and social links
+  - `/resume`: Resume page includes professional experiences, academic formation and skills
+  - `/portfolio`: Portfolio page lists all portfolio entries
+  - `/blog`: Blog page lists and show Post entries
+
