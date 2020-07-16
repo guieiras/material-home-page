@@ -21,7 +21,7 @@ const texts: I18nLanguage = {
         interested: 'Interested',
         notInterested: 'Not interested',
         beginner: 'Beginner',
-        intermediary: 'Intermediary',
+        intermediate: 'Intermediate',
         advanced: 'Advanced',
         forfun: '4fun',
         professionalExperience: 'Work experience',

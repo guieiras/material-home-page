@@ -29,7 +29,7 @@ export interface I18nLanguage {
         interested: string;
         notInterested: string;
         beginner: string;
-        intermediary: string;
+        intermediate: string;
         advanced: string;
         forfun: string;
         professionalExperience: string;

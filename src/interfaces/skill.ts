@@ -2,7 +2,7 @@ type Tag =
   | 'interested'
   | 'notInterested'
   | 'beginner'
-  | 'intermediary'
+  | 'intermediate'
   | 'advanced'
   | 'forfun'
   | 'professionalExperience';
