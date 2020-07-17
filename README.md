@@ -39,3 +39,13 @@ This application contains 4 main pages:
   - `/portfolio`: Portfolio page lists all portfolio entries
   - `/blog`: Blog page lists and show Post entries
 
+## 🌍 Locales
+
+Currently, material-home-page supports those languages. Remember to create them on Contentful (`https://app.contentful.com/spaces/[SPACE ID]/settings/locales`)
+
+  - 🇩🇪 Deutsche (de-DE)
+  - 🇺🇸 English (en-US)
+  - 🇪🇸 Español (es-ES)
+  - 🇫🇷 Français (fr-FR)
+  - 🇮🇹 Italiano (it-IT)
+  - 🇧🇷 Português do Brasil (pt-BR)

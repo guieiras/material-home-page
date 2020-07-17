@@ -1,11 +1,19 @@
 import React from 'react';
 
+import deDE from './de-DE';
 import enUS from './en-US';
+import esES from './es-ES';
+import frFR from './fr-FR';
+import itIT from './it-IT';
 import ptBR from './pt-BR';
 
 export function getTexts(language: string): I18nLanguage {
   return {
+    'de-DE': deDE,
     'en-US': enUS,
+    'es-ES': esES,
+    'fr-FR': frFR,
+    'it-IT': itIT,
     'pt-BR': ptBR,
   }[language];
 }
