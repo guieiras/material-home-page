@@ -1,6 +1,6 @@
 
 <h1 align="center">MaterialUI Personal page</h1>
-<p align="center">Production ready personal page, managed using <a href="https://www.contentful.com">Contentful</a>.</p>
+<p align="center">Production-ready personal page managed using <a href="https://www.contentful.com">Contentful</a>.</p>
 <p align="center"><img src="https://i.ibb.co/nQ3MsV2/material-home.png" alt="material-home" border="0"></p>
 
 ## 🚀 Quick start
