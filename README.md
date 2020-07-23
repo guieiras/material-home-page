@@ -5,9 +5,11 @@
 
 ## 🚀 Quick start
 
-1.  **Create an account and a space on Contentful.**
+1.  **Contentful setup**
 
-  Create a free account on [Contentful Get started](https://www.contentful.com/get-started/), and get an API token
+    1. Create a free account on [Contentful Get started](https://www.contentful.com/get-started/). When filling the `Company` field, put in your name, because this field will be used to name your Organization. Organizations are un-deletable, but you can always create a new one.
+    2. Create a Space. You can follow the initial tutorial or skip it and create a Space manually.
+    3. Get an API token (`https://app.contentful.com/spaces/[YOUR SPACE ID]/api/keys`). You can use the example key or create a new one.
 
 2.  **Configure your environment.**
 
