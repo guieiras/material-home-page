@@ -15,30 +15,30 @@
     "lint": "eslint '{pages,src}/**/*.{js,ts,tsx}' --fix"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^14.1.1",
-    "@contentful/rich-text-types": "^14.1.1",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
+    "@contentful/rich-text-types": "^14.1.2",
     "@material-ui/core": "^4.11.0",
-    "contentful": "^7.14.5",
-    "country-flag-icons": "^1.2.1",
-    "date-fns": "^2.14.0",
-    "markdown-to-jsx": "^6.11.4",
-    "mdi-material-ui": "^6.16.0",
-    "next": "^9.4.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "contentful": "^7.14.14",
+    "country-flag-icons": "^1.2.7",
+    "date-fns": "^2.16.1",
+    "markdown-to-jsx": "^7.1.0",
+    "mdi-material-ui": "^6.20.0",
+    "next": "^10.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@types/node": "^14.0.14",
-    "@types/react": "^16.9.41",
-    "@typescript-eslint/eslint-plugin": "^3.5.0",
-    "@typescript-eslint/parser": "^3.5.0",
-    "contentful-management": "^6.0.2",
-    "eslint": "^7.3.1",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
+    "@types/node": "^14.14.9",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "contentful-management": "^7.1.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.3",
-    "prettier": "^2.0.5",
-    "typescript": "^3.9.6"
+    "eslint-plugin-react": "^7.21.5",
+    "prettier": "^2.2.0",
+    "typescript": "^4.1.2"
   }
 }
