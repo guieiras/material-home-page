@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import ReactMarkdown from 'markdown-to-jsx';
-import React, { Props } from 'react';
+import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Markdown(props: Props<unknown>) {
+export default function Markdown({ children }: { children: string }) {
   const classes = useStyles();
   const options = {
     overrides: {
@@ -33,5 +33,9 @@ export default function Markdown(props: Props<unknown>) {
     },
   };
 
-  return <ReactMarkdown className={classes.root} options={options} {...props} />;
+  return (
+    <ReactMarkdown className={classes.root} options={options}>
+      {children}
+    </ReactMarkdown>
+  );
 }
