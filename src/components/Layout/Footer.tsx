@@ -49,7 +49,7 @@ export default function LayoutFooter({ currentPath, currentLanguage, languages, 
             </span>
           ) : (
             <a
-              href={pathBuilder(lang.default ? '' : lang.code, currentPath)}
+              href={pathBuilder(lang.default ? '' : lang.code, currentPath) || '/'}
               className={classes.languageLink}
               title={getTexts(lang.code).linkToLanguage}
               key={lang.code}
