@@ -1,7 +1,7 @@
 
 <h1 align="center">MaterialUI Personal page</h1>
 <p align="center">Production-ready personal page managed using <a href="https://www.contentful.com">Contentful</a>.</p>
-<p align="center"><img src="https://i.ibb.co/nQ3MsV2/material-home.png" alt="material-home" border="0"></p>
+<p align="center"><img src="https://i.ibb.co/nQ3MsV2/material-home.png" alt="Material Home Page demonstration" border="0"></p>
 
 ## 🚀 Quick start
 
@@ -28,6 +28,9 @@
   On your contentful space, create an `Author` entry with default field set as true, and a `Setting` called _siteName_.
 
   After that, you'll be able to launch your application.
+
+  <p align="center"><img src="https://i.ibb.co/7tTZq55/author.png" alt="initial Author entity on Contentful" border="0"></p>
+  <p align="center"><img src="https://i.ibb.co/L8wsMgK/setting.png" alt="initial Setting entity on Contentful" border="0"></p>
 
 4.  **Write your content and deploy it!**
 
