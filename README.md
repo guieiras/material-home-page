@@ -23,7 +23,7 @@
 
   Get your Contentful Management key on `https://app.contentful.com/spaces/[YOUR SPACE ID]/api/cma_tokens`. Remember to set it on `CONTENTFUL_MANAGEMENT_ACCESS_TOKEN` environment variable.
 
-  Run `yarn contentful:setup` to prepare your space with content types.
+  Run `npm contentful:setup` to prepare your space with content types.
 
   On your contentful space, create an `Author` entry with default field set as true, and a `Setting` called _siteName_.
 
@@ -34,7 +34,7 @@
 
 4.  **Write your content and deploy it!**
 
-  After writing your content on CMS, you can run `yarn build` and deploy `out/` folder to your preferred static asset server.
+  After writing your content on CMS, you can run `npm build` and deploy `out/` folder to your preferred static asset server.
 
 ##  📄 Page structure
 
