@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import Avatar from '@mui/material/Avatar';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import Page from '../../interfaces/page';
@@ -10,12 +10,13 @@ import ContentfulRichText from '../ContentfulRichText';
 
 import ProfileLinks from './ProfileLinks';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-    marginBottom: theme.spacing(3),
-  },
-  avatar: {
+const classes = {
+  avatar: 'Profile__avatar',
+  info: 'Profile__info',
+};
+
+const Root = styled(Paper)(({ theme }) => ({
+  [`& .${classes.avatar}`]: {
     display: 'inline-block',
     height: theme.spacing(10),
     marginRight: theme.spacing(2),
@@ -25,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
       margin: 'auto',
     },
   },
-  info: {
+
+  [`& .${classes.info}`]: {
     display: 'inline-block',
     [theme.breakpoints.down('sm')]: {
       display: 'block',
@@ -40,10 +42,8 @@ interface ComponentProps {
 }
 
 export default function HomeProfile({ profile, page }: ComponentProps): JSX.Element {
-  const classes = useStyles();
-
   return (
-    <Paper elevation={3} className={classes.root}>
+    <Root elevation={3} sx={{ p: 2, mb: 3 }}>
       {profile.profilePicture && <Avatar className={classes.avatar} src={profile.profilePicture} />}
       <div className={classes.info}>
         <Typography variant="h5" component="h1">
@@ -56,6 +56,6 @@ export default function HomeProfile({ profile, page }: ComponentProps): JSX.Elem
       </div>
 
       {ContentfulRichText(page.content)}
-    </Paper>
+    </Root>
   );
 }

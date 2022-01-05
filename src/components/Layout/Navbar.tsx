@@ -1,8 +1,7 @@
-import { makeStyles } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import FileAccount from 'mdi-material-ui/FileAccount';
 import Post from 'mdi-material-ui/Post';
 import ToyBrick from 'mdi-material-ui/ToyBrick';
@@ -23,14 +22,6 @@ interface ComponentProps {
   currentLanguage: string;
 }
 
-const useStyles = makeStyles(() => ({
-  title: {
-    color: 'inherit',
-    textDecoration: 'none',
-    flexGrow: 1,
-  },
-}));
-
 function NavbarLink({ href, text, icon }: LinkProps): JSX.Element {
   return (
     <IconButton href={href} component="a" title={text} color="inherit">
@@ -47,12 +38,20 @@ NavbarLink.propTypes = {
 
 export default function LayoutNavbar({ currentLanguage, siteName }: ComponentProps): JSX.Element {
   const content = useCMS();
-  const classes = useStyles();
 
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography component="a" href={`/${currentLanguage}`} variant="h6" className={classes.title}>
+        <Typography
+          component="a"
+          href={`/${currentLanguage}`}
+          style={{
+            color: 'inherit',
+            textDecoration: 'none',
+            flexGrow: 1,
+          }}
+          variant="h6"
+        >
           {siteName}
         </Typography>
         {content.pages.resume && (

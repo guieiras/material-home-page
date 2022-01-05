@@ -1,4 +1,9 @@
-import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography, makeStyles } from '@material-ui/core';
+import Avatar from '@mui/material/Avatar';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import AcademicFormation from '../../interfaces/formation';
@@ -9,35 +14,16 @@ interface ComponentProps {
   formation: AcademicFormation[];
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(3),
-  },
-  wrapper: {
-    margin: 0,
-  },
-  title: {
-    lineHeight: 1,
-    marginBottom: theme.spacing(1),
-  },
-  listItem: {
-    alignItems: 'flex-start',
-    padding: 0,
-  },
-}));
-
 export default function ResumeFormation({ formation }: ComponentProps) {
-  const classes = useStyles();
-
   return (
-    <List disablePadding className={classes.root}>
+    <List disablePadding sx={{ mt: 3 }}>
       {formation.map((education, idx) => (
-        <ListItem key={idx} disableGutters className={classes.listItem}>
+        <ListItem key={idx} disableGutters sx={{ p: 0 }} style={{ alignItems: 'flex-start' }}>
           <ListItemAvatar>
             <Avatar variant="rounded" src={education.academyImage} />
           </ListItemAvatar>
-          <ListItemText className={classes.wrapper}>
-            <Typography variant="h6" className={classes.title}>
+          <ListItemText sx={{ m: 0 }}>
+            <Typography variant="h6" sx={{ mb: 0 }} style={{ lineHeight: 1 }}>
               {education.academy}
             </Typography>
             <Typography component="p" variant="subtitle1" gutterBottom>

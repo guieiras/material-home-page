@@ -1,5 +1,5 @@
 import { BLOCKS } from '@contentful/rich-text-types';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import React from 'react';
 
 import ContentfulRichText, { TextComponent } from '../ContentfulRichText';

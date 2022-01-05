@@ -1,6 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
-import { Typography } from '@material-ui/core';
+import Typography from '@mui/material/Typography';
 import React, { ElementType } from 'react';
 
 interface TextComponentProps {
@@ -19,8 +19,7 @@ interface TextComponentProps {
     | 'subtitle2'
     | 'body1'
     | 'body2'
-    | 'overline'
-    | 'srOnly';
+    | 'overline';
   margins?: [number, number];
 }
 

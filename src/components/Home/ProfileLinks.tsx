@@ -1,4 +1,5 @@
-import { makeStyles, IconButton } from '@material-ui/core';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
 import Email from 'mdi-material-ui/Email';
 import Facebook from 'mdi-material-ui/Facebook';
 import Github from 'mdi-material-ui/Github';
@@ -8,21 +9,13 @@ import React from 'react';
 
 import Profile from '../../interfaces/profile';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginBottom: theme.spacing(2),
-  },
-}));
-
 interface ComponentProps {
   profile: Profile;
 }
 
 export default function HomeBio({ profile: { social } }: ComponentProps): JSX.Element {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
+    <Box>
       {social.email && (
         <IconButton color="primary" rel="noreferrer" aria-label="email" href={`mailto:${social.email}`}>
           <Email />
@@ -48,6 +41,6 @@ export default function HomeBio({ profile: { social } }: ComponentProps): JSX.El
           <Github />
         </IconButton>
       )}
-    </div>
+    </Box>
   );
 }

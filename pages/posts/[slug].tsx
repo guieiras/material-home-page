@@ -1,7 +1,7 @@
 import { ParsedUrlQuery } from 'querystring';
 
-import { makeStyles } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { format, parseISO } from 'date-fns';
 import React from 'react';
 
@@ -13,31 +13,20 @@ import { useI18n } from '../../src/i18n';
 import CMSContent from '../../src/interfaces';
 import Post from '../../src/interfaces/post';
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(4),
-  },
-  subtitle: {
-    marginTop: theme.spacing(1),
-  },
-}));
-
 export function BlogPost({ post }: { post: Post }): JSX.Element {
-  const classes = useStyles();
   const texts = useI18n();
 
   return (
     <article>
       <Meta title={post.title} description={post.shortContent} />
-      <header className={classes.header}>
+      <Box component="header" sx={{ mt: 3, mb: 4 }}>
         <Typography variant="h4" component="h1">
           {post.title}
         </Typography>
-        <Typography variant="caption" className={classes.subtitle}>
+        <Typography variant="caption" sx={{ mt: 1 }}>
           {format(parseISO(post.createdAt), 'PPPP', { locale: texts.date.locale })}
         </Typography>
-      </header>
+      </Box>
       {PostRichText(post.content)}
     </article>
   );
