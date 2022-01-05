@@ -1,20 +1,10 @@
-import { makeStyles } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 import React from 'react';
 
 import Language from '../interfaces/language';
 
 import LayoutFooter from './Layout/Footer';
 import LayoutNavbar from './Layout/Navbar';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: theme.spacing(4),
-    minHeight: 'calc(100vh - 96px)',
-  },
-}));
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -33,12 +23,20 @@ export default function Layout({
   languages,
   siteName,
 }: LayoutProps): JSX.Element {
-  const classes = useStyles();
 
   return (
     <>
       <LayoutNavbar siteName={siteName} currentLanguage={currentLanguagePath} />
-      <Container maxWidth="md" className={classes.root} component="main">
+      <Container
+        component="main"
+        maxWidth="md"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: 'calc(100vh - 96px)'
+        }}
+        sx={{ mt: 4 }}
+      >
         {children}
         <LayoutFooter
           currentPath={currentPath}

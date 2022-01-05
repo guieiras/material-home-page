@@ -1,5 +1,6 @@
-import { makeStyles, Grid } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import Flags from 'country-flag-icons/react/3x2';
 import React from 'react';
 
@@ -7,8 +8,15 @@ import { getTexts } from '../../i18n';
 import Language from '../../interfaces/language';
 import pathBuilder from '../../util/pathBuilder';
 
-const useStyles = makeStyles((theme) => ({
-  footer: {
+const classes = {
+  root: 'Footer',
+  languageSpan: 'Footer__language-span',
+  languageLink: 'Footer__language-link',
+  flag: 'Footer__flag'
+}
+
+const Root = styled('footer')(({ theme }) => ({
+  [`&.${classes.root}`]: {
     borderTop: `1px solid ${theme.palette.grey[300]}`,
     display: 'flex',
     flexDirection: 'column',
@@ -16,14 +24,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
     textAlign: 'center',
   },
-  languageSpan: {
+  [`& .${classes.languageSpan}`]: {
     margin: theme.spacing(0, 0.5),
   },
-  languageLink: {
+  [`& .${classes.languageLink}`]: {
     margin: theme.spacing(0, 0.5),
     opacity: 0.2,
   },
-  flag: {
+  [`& .${classes.flag}`]: {
     width: theme.spacing(4),
   },
 }));
@@ -36,11 +44,9 @@ interface LayoutProps {
 }
 
 export default function LayoutFooter({ currentPath, currentLanguage, languages, siteName }: LayoutProps): JSX.Element {
-  const classes = useStyles();
-
   return (
-    <footer className={classes.footer}>
-      <Grid container justify="center">
+    <Root className={classes.root}>
+      <Grid container justifyContent="center">
         {languages.map((lang) => {
           const FlagComponent = Flags[lang.code.split('-')[1]];
           return lang.code === currentLanguage ? (
@@ -62,6 +68,6 @@ export default function LayoutFooter({ currentPath, currentLanguage, languages, 
       <Typography variant="body2" color="textSecondary">
         {siteName} &copy; {new Date().getFullYear()}
       </Typography>
-    </footer>
+    </Root>
   );
 }

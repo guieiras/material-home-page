@@ -1,14 +1,17 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider } from '@material-ui/core/styles';
-import { AppProps } from 'next/app';
+import { CacheProvider } from '@emotion/react'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
 import Head from 'next/head';
 import React from 'react';
+import { createEmotionCache, AppPropsWithEmotion } from '../src/util/emotion'
+
+const clientSideEmotionCache = createEmotionCache()
 
 import theme from '../src/components/theme';
 
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+export default function App({ Component, emotionCache, pageProps }: AppPropsWithEmotion): JSX.Element {
   return (
-    <React.Fragment>
+    <CacheProvider value={emotionCache || clientSideEmotionCache}>
       <Head>
         <title>My page</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -17,6 +20,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </React.Fragment>
+    </CacheProvider>
   );
 }

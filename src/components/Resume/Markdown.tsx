@@ -1,20 +1,9 @@
-import { makeStyles } from '@material-ui/core';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 import ReactMarkdown from 'markdown-to-jsx';
 import React from 'react';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(2),
-  },
-  paragraph: {
-    lineHeight: 1.7,
-  },
-}));
-
 export default function Markdown({ children }: { children: string }) {
-  const classes = useStyles();
   const options = {
     overrides: {
       h1: { component: Typography, props: { variant: 'h1' } },
@@ -23,18 +12,18 @@ export default function Markdown({ children }: { children: string }) {
       h4: { component: Typography, props: { variant: 'h4' } },
       span: {
         component: Typography,
-        props: { className: classes.paragraph, color: 'textSecondary', variant: 'body1', paragraph: true },
+        props: { style: { lineHeight: 1.7 }, color: 'textSecondary', variant: 'body1', paragraph: true },
       },
       p: {
         component: Typography,
-        props: { className: classes.paragraph, color: 'textSecondary', variant: 'body1', paragraph: true },
+        props: { style: { lineHeight: 1.7 }, color: 'textSecondary', variant: 'body1', paragraph: true },
       },
       a: { component: Link },
     },
   };
 
   return (
-    <ReactMarkdown className={classes.root} options={options}>
+    <ReactMarkdown sx={{ mt: 2 }} options={options}>
       {children}
     </ReactMarkdown>
   );

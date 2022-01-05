@@ -1,5 +1,5 @@
-import { colors } from '@material-ui/core';
-import Chip from '@material-ui/core/Chip';
+import { colors } from '@mui/material'
+import Chip from '@mui/material/Chip';
 import React from 'react';
 
 import { useI18n } from '../../i18n';

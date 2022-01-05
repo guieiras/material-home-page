@@ -1,5 +1,4 @@
-import { makeStyles } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import { fetchDataToStaticProps } from '../src/cms';
@@ -12,17 +11,7 @@ import ResumeFormation from '../src/components/Resume/Formation';
 import ResumeSkills from '../src/components/Resume/Skills';
 import { useI18n } from '../src/i18n';
 
-const useStyles = makeStyles((theme) => ({
-  title: {
-    marginTop: theme.spacing(3),
-  },
-  sectionHeader: {
-    marginTop: theme.spacing(5),
-  },
-}));
-
 export function Resume(): JSX.Element {
-  const classes = useStyles();
   const texts = useI18n();
   const content = useCMS();
 
@@ -32,19 +21,19 @@ export function Resume(): JSX.Element {
         title={`${content.pages.resume.title} - ${content.profile.name}`}
         description={content.pages.resume.description}
       />
-      <Typography variant="h3" component="h1" className={classes.title}>
+      <Typography variant="h3" component="h1" sx={{ mt: 3 }}>
         {content.pages.resume.title}
       </Typography>
       {ContentfulRichText(content.pages.resume.content)}
-      <Typography variant="h5" component="h2" className={classes.sectionHeader}>
+      <Typography variant="h5" component="h2" sx={{ mt: 5 }}>
         {texts.pages.resume.experiences}
       </Typography>
       <ResumeExperiences experiences={content.professional} />
-      <Typography variant="h5" component="h2" className={classes.sectionHeader}>
+      <Typography variant="h5" component="h2" sx={{ mt: 5 }}>
         {texts.pages.resume.formation}
       </Typography>
       <ResumeFormation formation={content.formation} />
-      <Typography variant="h5" component="h2" className={classes.sectionHeader}>
+      <Typography variant="h5" component="h2" sx={{ mt: 5 }}>
         {texts.pages.resume.skills}
       </Typography>
       <ResumeSkills skillsGroups={content.skills} />

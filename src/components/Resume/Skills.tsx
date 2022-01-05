@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+import { styled } from '@mui/material/styles';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import SkillGroup from '../../interfaces/skillGroup';
@@ -13,23 +13,31 @@ interface ComponentProps {
   skillsGroups: SkillGroup[];
 }
 
-const useStyles = makeStyles((theme) => ({
-  header: {
+const classes = {
+  header: 'Skills__header',
+  list: 'Skills__list',
+  listItem: 'Skills__list-item',
+  tagWrapper: 'Skills__tag-wrapper',
+  tag: 'Skills__tag'
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.header}`]: {
     marginTop: theme.spacing(3),
   },
-  list: {
+  [`& .${classes.list}`]: {
     marginTop: theme.spacing(2),
   },
-  listItem: {
+  [`& .${classes.listItem}`]: {
     [theme.breakpoints.down('xs')]: {
       flexFlow: 'column',
       alignItems: 'flex-start',
     },
   },
-  tagWrapper: {
+  [`& .${classes.tagWrapper}`]: {
     alignItems: 'flex-end',
   },
-  tag: {
+  [`& .${classes.tag}`]: {
     marginLeft: theme.spacing(1),
     [theme.breakpoints.down('xs')]: {
       marginLeft: theme.spacing(0),
@@ -42,10 +50,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ResumeSkills({ skillsGroups }: ComponentProps) {
-  const classes = useStyles();
-
   return (
-    <React.Fragment>
+    <Root>
       {skillsGroups.map((group) => (
         <React.Fragment key={group.name}>
           <Typography variant="h6" className={classes.header}>
@@ -65,6 +71,6 @@ export default function ResumeSkills({ skillsGroups }: ComponentProps) {
           </List>
         </React.Fragment>
       ))}
-    </React.Fragment>
+    </Root>
   );
 }

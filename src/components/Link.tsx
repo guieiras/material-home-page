@@ -1,4 +1,4 @@
-import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link';
+import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
 import clsx from 'clsx';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,6 +8,7 @@ type NextComposedProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'hr
 
 const NextComposed = React.forwardRef<HTMLAnchorElement, NextComposedProps>(
   (props: React.PropsWithChildren<NextComposedProps>, ref) => {
+    // eslint-disable-next-line react/prop-types
     const { as, href, replace, scroll, passHref, shallow, prefetch, ...other } = props;
 
     return (

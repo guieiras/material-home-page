@@ -1,7 +1,6 @@
-import { makeStyles } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Typography from '@material-ui/core/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography';
 import { format, parseISO } from 'date-fns';
 import React from 'react';
 
@@ -13,26 +12,7 @@ import Meta from '../src/components/Layout/Meta';
 import { useI18n } from '../src/i18n';
 import pathBuilder from '../src/util/pathBuilder';
 
-const useStyles = makeStyles((theme) => ({
-  title: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(2),
-  },
-  list: {
-    marginTop: theme.spacing(1),
-  },
-  listItem: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    marginTop: theme.spacing(2),
-  },
-  subtitle: {
-    marginTop: theme.spacing(1),
-  },
-}));
-
 export function Blog({ currentLanguagePath }: { currentLanguagePath: string }): JSX.Element {
-  const classes = useStyles();
   const texts = useI18n();
   const content = useCMS();
 
@@ -42,13 +22,18 @@ export function Blog({ currentLanguagePath }: { currentLanguagePath: string }): 
         title={`${content.pages.blog.title} - ${content.profile.name}`}
         description={content.pages.blog.description}
       />
-      <Typography variant="h3" component="h1" className={classes.title}>
+      <Typography variant="h3" component="h1" sx={{ mt: 3, mb: 2 }}>
         {content.pages.blog.title}
       </Typography>
       {ContentfulRichText(content.pages.blog.content)}
-      <List className={classes.list}>
+      <List sx={{ mt: 1 }}>
         {content.posts.map((post) => (
-          <ListItem key={post.slug} disableGutters className={classes.listItem}>
+          <ListItem
+            disableGutters
+            key={post.slug}
+            sx={{ mt: 2 }}
+            style={{ alignItems: 'flex-start', flexDirection: 'column' }}
+          >
             <Typography
               component="a"
               color="primary"
@@ -60,7 +45,7 @@ export function Blog({ currentLanguagePath }: { currentLanguagePath: string }): 
             <Typography variant="caption">
               {format(parseISO(post.createdAt), 'PPPP', { locale: texts.date.locale })}
             </Typography>
-            <Typography variant="subtitle2" className={classes.subtitle}>
+            <Typography variant="subtitle2" sx={{ mt: 1 }}>
               {post.shortContent}
             </Typography>
           </ListItem>

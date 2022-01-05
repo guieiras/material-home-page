@@ -1,10 +1,10 @@
-import { makeStyles } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import { fetchDataToStaticProps } from '../src/cms';
@@ -15,38 +15,46 @@ import Meta from '../src/components/Layout/Meta';
 import PortfolioTag from '../src/components/PortfolioTag';
 import { useI18n } from '../src/i18n';
 
-const useStyles = makeStyles((theme) => ({
-  title: {
+const classes = {
+  title: 'Portfolio__title',
+  sectionHeader: 'Portfolio__section-header',
+  grid: 'Portfolio__grid',
+  card: 'Portfolio__card',
+  cardTitle: 'Portfolio__card-title',
+  tag: 'Portfolio__tag'
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.title}`]: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
   },
-  sectionHeader: {
+  [`& .${classes.sectionHeader}`]: {
     marginTop: theme.spacing(5),
   },
-  grid: {
+  [`& .${classes.grid}`]: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(5),
   },
-  card: {
+  [`& .${classes.card}`]: {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
   },
-  cardTitle: {
+  [`& .${classes.cardTitle}`]: {
     marginBottom: 'auto',
   },
-  tag: {
+  [`& .${classes.tag}`]: {
     marginRight: theme.spacing(1),
   },
 }));
 
 export function Portfolio(): JSX.Element {
   const texts = useI18n();
-  const classes = useStyles();
   const content = useCMS();
 
   return (
-    <>
+    <Root>
       <Meta
         title={`${content.pages.portfolio.title} - ${content.profile.name}`}
         description={content.pages.portfolio.description}
@@ -57,7 +65,7 @@ export function Portfolio(): JSX.Element {
       {ContentfulRichText(content.pages.portfolio.content)}
       <Grid container spacing={2} className={classes.grid}>
         {content.portfolio.map((project) => (
-          <Grid item xs={12} sm={6} key={project.projectUrl}>
+          <Grid item xs={12} sm={6} key={project.projectUrl || project.repositoryUrl}>
             <Card className={classes.card}>
               <CardContent className={classes.cardTitle}>
                 <Typography gutterBottom variant="h5" component="h2">
@@ -88,7 +96,7 @@ export function Portfolio(): JSX.Element {
           </Grid>
         ))}
       </Grid>
-    </>
+    </Root>
   );
 }
 

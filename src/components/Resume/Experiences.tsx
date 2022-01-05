@@ -1,4 +1,9 @@
-import { List, ListItem, Avatar, ListItemText, Typography, makeStyles } from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+import Avatar from '@mui/material/Avatar';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import { useI18n } from '../../i18n';
@@ -11,34 +16,41 @@ interface ComponentProps {
   experiences: ProfessionalExperience[];
 }
 
-const useStyles = makeStyles((theme) => ({
-  image: {
+const classes = {
+  image: 'Experiences__image',
+  company: 'Experiences__company',
+  jobs: 'Experiences__jobs',
+  list: 'Experiences__list',
+  listItem: 'Experiences__list-item'
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.image}`]: {
     display: 'inline-block',
     width: theme.spacing(4),
     height: theme.spacing(4),
     marginRight: theme.spacing(1.5),
   },
-  company: {
+  [`& .${classes.company}`]: {
     display: 'flex',
     marginTop: theme.spacing(3),
   },
-  jobs: {
+  [`& .${classes.jobs}`]: {
     display: 'flex',
   },
-  list: {
+  [`& .${classes.list}`]: {
     marginTop: theme.spacing(1),
   },
-  listItem: {
+  [`& .${classes.listItem}`]: {
     padding: 0,
   },
 }));
 
 export default function ResumeExperiences({ experiences }: ComponentProps) {
-  const classes = useStyles();
   const texts = useI18n();
 
   return (
-    <div>
+    <Root>
       {experiences.map((company, idx) => (
         <section key={idx}>
           <div className={classes.company}>
@@ -64,6 +76,6 @@ export default function ResumeExperiences({ experiences }: ComponentProps) {
           </List>
         </section>
       ))}
-    </div>
+    </Root>
   );
 }
