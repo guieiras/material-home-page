@@ -1,10 +1,10 @@
 {
-  "name": "personal-page",
+  "name": "material-home-page",
   "author": {
     "name": "Guilherme Eiras",
     "email": "guialbertoeiras@hotmail.com"
   },
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -21,29 +21,29 @@
     "@emotion/react": "^11.7.1",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.6.0",
-    "@mui/material": "^5.2.7",
-    "@mui/system": "^5.2.6",
-    "contentful": "^9.1.5",
-    "country-flag-icons": "^1.4.19",
+    "@mui/material": "^5.4.1",
+    "@mui/system": "^5.4.1",
+    "contentful": "^9.1.10",
+    "country-flag-icons": "^1.4.21",
     "date-fns": "^2.28.0",
-    "markdown-to-jsx": "^7.1.5",
+    "markdown-to-jsx": "^7.1.6",
     "mdi-material-ui": "^7.1.0",
-    "next": "^12.0.7",
+    "next": "^12.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/node": "^17.0.8",
-    "@types/react": "^17.0.38",
-    "@typescript-eslint/eslint-plugin": "^5.9.0",
-    "@typescript-eslint/parser": "^5.9.0",
-    "contentful-management": "^7.48.0",
+    "@types/node": "^17.0.17",
+    "@types/react": "^17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "contentful-management": "^8.1.0",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "prettier": "^2.5.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.5"
   }
 }
