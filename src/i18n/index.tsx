@@ -1,3 +1,4 @@
+import { Locale } from 'date-fns';
 import React from 'react';
 
 import deDE from './de-DE';
@@ -21,7 +22,7 @@ export function getTexts(language: string): I18nLanguage {
 export interface I18nLanguage {
   linkToLanguage: string;
   date: {
-    locale: Record<string, unknown>;
+    locale: Locale;
     current: string;
   };
   pages: {
